@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mi YearCompass Digital</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #d4af37;
+            --bg: #f9f9f9;
+            --paper: #ffffff;
+            --text: #333;
+            --instruction: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            padding-bottom: 160px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--paper);
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        /* --- CONTROLES SUPERIORES --- */
+        .top-controls {
+            background: #eef2f3;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .year-selector-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        select#yearSelect {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-weight: bold;
+            color: var(--primary);
+            cursor: pointer;
+            background-color: white;
+            flex-grow: 1;
+            max-width: 200px;
+        }
+
+        .btn-mini {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0;
+            padding: 0;
+        }
+
+        .mode-switch {
+            display: flex;
+            align-items: center;
+        }
+
+        .mode-switch label {
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+        }
+
+        h1 { color: var(--primary); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: var(--accent); margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.4em;}
+        h3 { color: var(--primary); font-size: 1.1em; margin-top: 25px; margin-bottom: 10px; text-transform: uppercase; }
+
+        .instruction-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            color: var(--instruction);
+            font-size: 0.95em;
+            font-style: italic;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .sub-instruction {
+            display: block;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        fieldset {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        /* Estilo para etiquetas que son oraciones completas (no mayúsculas forzadas) */
+        label.sentence {
+            text-transform: none;
+            font-size: 1em;
+            letter-spacing: normal;
+            font-weight: 600;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 16px;
+            margin-bottom: 10px;
+            background: #fff;
+            -webkit-appearance: none;
+        }
+
+        textarea { min-height: 100px; resize: vertical; }
+
+        /* --- BARRA INFERIOR FLOTANTE --- */
+        #status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            padding-bottom: calc(15px + env(safe-area-inset-bottom));
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #save-status { font-size: 0.9em; opacity: 0.9; }
+
+        .btn-group { display: flex; gap: 10px; }
+
+        button, .file-upload-label {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+
+        button:active, .file-upload-label:active { opacity: 0.7; transform: scale(0.98); }
+        button.secondary { background: #7f8c8d; }
+        button.danger { background: #e74c3c; }
+
+        #importFile { display: none; }
+
+        /* --- DETAILS / ACCORDION --- */
+        details {
+            margin-bottom: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        summary {
+            padding: 18px;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--accent);
+            line-height: 1;
+        }
+        details[open] summary::after { content: '-'; }
+        details[open] summary { border-bottom: 1px solid #e0e0e0; }
+        .details-content { padding: 20px; }
+
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 600px) {
+            body { padding: 10px; padding-bottom: 180px; }
+            .container { padding: 20px 15px; width: 100%; box-sizing: border-box; border-radius: 0; }
+            .top-controls { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .year-selector-group, .mode-switch { width: 100%; }
+            select#yearSelect { max-width: none; }
+            #status-bar { flex-direction: column; gap: 12px; align-items: stretch; }
+            #save-status { text-align: center; margin-bottom: 5px; }
+            .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .btn-group button.danger { grid-column: span 2; background-color: #c0392b; }
+            button, .file-upload-label { width: 100%; box-sizing: border-box; padding: 12px; }
+        }
+
+        /* Modo Lectura */
+        body.read-only textarea, body.read-only input {
+            border: none;
+            background: transparent;
+            padding: 0;
+            color: #000;
+            pointer-events: none;
+        }
+        body.read-only .instruction-box { display: none; }
+        body.read-only .sub-instruction { opacity: 0.7; font-style: normal; margin-bottom: 2px; }
+
+        @media print {
+            .hidden-on-print, #status-bar, .top-controls { display: none !important; }
+            body { padding: 0; }
+            .container { box-shadow: none; max-width: 100%; }
+            details { border: none; }
+            summary { display: none; }
+            .details-content { display: block; padding: 0; }
+            details[open] summary { border: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-controls hidden-on-print">
+        <div class="year-selector-group">
+            <span style="font-weight:600; color:var(--primary);">Periodo:</span>
+            <select id="yearSelect" onchange="changeYear()"></select>
+            <button class="btn-mini" onclick="addNewYear()" title="Crear nuevo año">+</button>
+        </div>
+
+        <div class="mode-switch">
+            <label>
+                <input type="checkbox" id="readOnlyToggle">
+                <span>Vista Final (Lectura)</span>
+            </label>
+        </div>
+    </div>
+
+    <header>
+        <h1>YearCompass</h1>
+        <p>Cierra el <span class="val-past">YYYY</span>. Planea el <span class="val-future">YYYY</span>.</p>
+    </header>
+
+    <form id="yc-form">
+
+        <h2>EL AÑO PASADO (<span class="val-past">YYYY</span>)</h2>
+        <p class="intro-text" style="text-align:center; font-style:italic; color:#666;">
+            El cuadernillo tiene dos partes distintas. La primera mitad te ayudará a revisar, aprender y celebrar el año que estás dejando atrás.
+        </p>
+
+        <details>
+            <summary>Revisa tu Calendario</summary>
+            <div class="details-content">
+                <div class="instruction-box">
+                    Repasa el calendario del año pasado semana por semana. Si ves un evento importante, una reunión familiar o de amigos, o un proyecto significativo, escríbelo aquí.
+                </div>
+                <textarea name="p1_calendario"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Sobre esto trataba mi año pasado</summary>
+            <div class="details-content">
+                <div class="instruction-box">
+                    Vivimos la vida a través de diferentes pero unidos aspectos. Mira las áreas siguientes y pregúntate que eventos fueron significativos para ti. Anota tus respuestas.
+                </div>
+
+                <label>VIDA PERSONAL, FAMILIA</label>
+                <textarea name="p1_personal"></textarea>
+
+                <label>CARRERA, ESTUDIOS</label>
+                <textarea name="p1_carrera"></textarea>
+
+                <label>AMIGOS, COMUNIDAD</label>
+                <textarea name="p1_amigos"></textarea>
+
+                <label>RELAJACIÓN, PASATIEMPOS, CREATIVIDAD</label>
+                <textarea name="p1_hobbies"></textarea>
+
+                <label>SALUD Y ESTADO FÍSICO</label>
+                <textarea name="p1_salud"></textarea>
+
+                <label>SALUD MENTAL, AUTOCONOCIMIENTO</label>
+                <textarea name="p1_mental"></textarea>
+
+                <label>HÁBITOS QUE TE DEFINEN</label>
+                <textarea name="p1_habitos"></textarea>
+
+                <label>UN MEJOR MAÑANA</label>
+                <span class="sub-instruction">¿Qué hiciste este año para dejar el mundo un lugar mejor de lo que lo encontraste?</span>
+                <textarea name="p1_mundo"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Seis Frases sobre el Año Pasado</summary>
+            <div class="details-content">
+                <label class="sentence">La decisión más sabia que tomé...</label>
+                <input type="text" name="p1_frase_decision">
+
+                <label class="sentence">La lección más importante que aprendí...</label>
+                <input type="text" name="p1_frase_leccion">
+
+                <label class="sentence">El mayor riesgo que asumí...</label>
+                <input type="text" name="p1_frase_riesgo">
+
+                <label class="sentence">La mayor sorpresa...</label>
+                <input type="text" name="p1_frase_sorpresa">
+
+                <label class="sentence">La cosa más importante que hice para otros...</label>
+                <input type="text" name="p1_frase_ayuda">
+
+                <label class="sentence">El logro más grande...</label>
+                <input type="text" name="p1_frase_logro">
+            </div>
+        </details>
+
+        <details>
+            <summary>Seis preguntas sobre el año pasado</summary>
+            <div class="details-content">
+                <label class="sentence">¿De qué estás más orgulloso?</label>
+                <textarea name="p1_orgullo"></textarea>
+
+                <label class="sentence">¿Quiénes son las tres personas han tenido el mayor efecto en ti?</label>
+                <input type="text" name="p1_personas_influyentes">
+
+                <label class="sentence">¿En qué tres personas has tenido el mayor efecto?</label>
+                <input type="text" name="p1_personas_impactadas">
+
+                <label class="sentence">¿Qué no pudiste terminar?</label>
+                <input type="text" name="p1_inconcluso">
+
+                <label class="sentence">¿Cuál es la mejor cosa que has descubierto sobre ti mismo?</label>
+                <textarea name="p1_descubrimiento"></textarea>
+
+                <label class="sentence">¿Cuál es la cosa por la que te sientes más agradecido?</label>
+                <textarea name="p1_gratitud"></textarea>
+
+                <label>LOS MEJORES MOMENTOS</label>
+                <div class="instruction-box">
+                    Describe los momentos más bonitos, más alegres y más recordables del año. Dibújalos en esta hoja. ¿Cómo te sentiste? ¿Con quién estabas? ¿Qué hacías? ¿Qué olores, sabores o sonidos recuerdas?
+                </div>
+                <textarea name="p1_mejores_momentos" style="height: 150px;"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Logros, Desafíos y Perdón</summary>
+            <div class="details-content">
+                <h3>MIS TRES MAYORES LOGROS</h3>
+                <div class="instruction-box">
+                    Escribe tus tres mayores logros aquí.
+                </div>
+                <span class="sub-instruction">¿Qué has hecho para alcanzar estos éxitos?</span>
+                <textarea name="p1_logros_que"></textarea>
+                <span class="sub-instruction">¿Quienes te ayudaron a alcanzar estos éxitos? ¿Cómo?</span>
+                <textarea name="p1_logros_quien"></textarea>
+
+                <h3>MIS TRES MAYORES DESAFÍOS</h3>
+                <div class="instruction-box">
+                    Escribe tus tres mayores desafíos del año pasado aquí.
+                </div>
+                <span class="sub-instruction">¿Quién o qué te ayudó a superarlos?</span>
+                <textarea name="p1_desafios_quien"></textarea>
+                <span class="sub-instruction">¿Qué has aprendido de ti mismo mientras superabas estos desafíos?</span>
+                <textarea name="p1_desafios_que"></textarea>
+
+                <h3>PERDÓN</h3>
+                <div class="instruction-box">
+                    ¿Pasó alguna cosa el año pasado por la que todavía tienes que ser perdonada? ¿Alguna acción o palabras que te hirieron? ¿O alguna razón por la que estás enfadado contigo mismo? Escríbelo aquí.
+                </div>
+                <textarea name="p1_perdon"></textarea>
+                <span class="sub-instruction">Hazte un favor y perdona. (Si todavía no estás preparado a perdonar, escríbelo de todas formas. Hacerlo ayuda).</span>
+
+                <h3>DESAHOGO</h3>
+                <div class="instruction-box">
+                    ¿Qué más debes reconocer para poder cerrar el año anterior? ¿Cuáles son las cosas de las que te tienes que desprender para empezar el año nuevo? Descríbelas o dibújalas, reflexiona, y déjalo ir
+                </div>
+                <textarea name="p1_soltar"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary><span>Cierre (<span class="val-past">YYYY</span>)</span></summary>
+            <div class="details-content">
+                <label>EL AÑO PASADO EN TRES PALABRAS</label>
+                <span class="sub-instruction">Elije tres palabras que caracterizaron tu año pasado.</span>
+                <input type="text" name="p1_tres_palabras">
+
+                <label>EL LIBRO DE MI AÑO PASADO</label>
+                <span class="sub-instruction">Un libro o una película fue basada en tu año pasado. ¿Qué título le darías?</span>
+                <input type="text" name="p1_titulo_libro">
+
+                <label>DESPEDIDA DEL AÑO PASADO</label>
+                <span class="sub-instruction">Si ha quedado algo que quieres escribir o hay alguien de quien te quieras despedir, hazlo ahora.</span>
+                <textarea name="p1_despedida"></textarea>
+            </div>
+        </details>
+
+        <h2>EL AÑO POR DELANTE (<span class="val-future">YYYY</span>)</h2>
+        <p class="intro-text" style="text-align:center; font-style:italic; color:#666;">
+            Soñarás, planearás y te prepararás para sacar lo mejor del próximo año.
+        </p>
+
+        <details>
+            <summary>Atrévete a Soñar Grande</summary>
+            <div class="details-content">
+                <div class="instruction-box">
+                    ¿Qué aspecto tiene el año que viene para ti? ¿Cuál es el caso ideal? ¿Por qué será bueno? Escribe, dibuja, líbrate de tus expectativas y sueña.
+                </div>
+                <textarea name="p2_dream" style="height: 200px;"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>De esto trata el año que viene para mí</summary>
+            <div class="details-content">
+                <div class="instruction-box">
+                    Echa un vistazo a las áreas de tu vida y ponte metas para el próximo año. Escribe esas metas en la página (este es el primer paso para lograrlas).
+                </div>
+
+                <label>VIDA PERSONAL, FAMILIA</label>
+                <textarea name="p2_personal"></textarea>
+
+                <label>CARRERA, ESTUDIOS</label>
+                <textarea name="p2_carrera"></textarea>
+
+                <label>AMIGOS, COMUNIDAD</label>
+                <textarea name="p2_amigos"></textarea>
+
+                <label>RELAJACIÓN, PASATIEMPOS, CREATIVIDAD</label>
+                <textarea name="p2_hobbies"></textarea>
+
+                <label>SALUD Y ESTADO FÍSICO</label>
+                <textarea name="p2_salud"></textarea>
+
+                <label>SALUD MENTAL, AUTOCONOCIMIENTO</label>
+                <textarea name="p2_mental"></textarea>
+
+                <label>HÁBITOS QUE TE DEFINEN</label>
+                <textarea name="p2_habitos"></textarea>
+
+                <label>UN MEJOR MAÑANA</label>
+                <span class="sub-instruction">¿Qué harás el próximo año para dejar el mundo mejor de cómo lo encontraste?</span>
+                <textarea name="p2_mundo"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Tríos Mágicos para el año que viene (I)</summary>
+            <div class="details-content">
+                <label class="sentence">Estas tres cosas me van a gustar de mí mismo.</label>
+                <textarea name="p2_trio_gustar" rows="3"></textarea>
+
+                <label class="sentence">Estoy listo para desprenderme de estas tres cosas.</label>
+                <textarea name="p2_trio_soltar" rows="3"></textarea>
+
+                <label class="sentence">Estas son las tres cosas que más deseo lograr.</label>
+                <textarea name="p2_trio_lograr" rows="3"></textarea>
+
+                <label class="sentence">Éstas son las tres personas en las que me puedo apoyar en los momentos difíciles.</label>
+                <textarea name="p2_trio_apoyo" rows="3"></textarea>
+
+                <label class="sentence">Estas tres novedades que me voy a atrever a descubrir.</label>
+                <textarea name="p2_trio_novedad" rows="3"></textarea>
+
+                <label class="sentence">Tendré la fuerza de decir que «no» a estas tres cosas.</label>
+                <textarea name="p2_trio_no" rows="3"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Tríos Mágicos para el año que viene (II)</summary>
+            <div class="details-content">
+                <label class="sentence">Con estas tres cosas voy a hacer mi alrededor más acogedor.</label>
+                <textarea name="p2_trio_acogedor" rows="3"></textarea>
+
+                <label class="sentence">Voy a hacer estas tres cosas cada mañana.</label>
+                <textarea name="p2_trio_manana" rows="3"></textarea>
+
+                <label class="sentence">Con estas tres cosas me voy a mimar habitualmente.</label>
+                <textarea name="p2_trio_mimar" rows="3"></textarea>
+
+                <label class="sentence">Voy a visitar los siguientes tres lugares.</label>
+                <textarea name="p2_trio_visitar" rows="3"></textarea>
+
+                <label class="sentence">De estas tres maneras voy a conectar más con las personas que quiero.</label>
+                <textarea name="p2_trio_conectar" rows="3"></textarea>
+
+                <label class="sentence">Con los siguientes tres regalos voy a premiar mis propios éxitos.</label>
+                <textarea name="p2_trio_premio" rows="3"></textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Seis frases sobre el año que me espera</summary>
+            <div class="details-content">
+                <label class="sentence">Este año no voy a dejar para mañana...</label>
+                <input type="text" name="p2_frase_no_posponer">
+
+                <label class="sentence">Este año voy a sacar fuerzas de...</label>
+                <input type="text" name="p2_frase_fuerzas">
+
+                <label class="sentence">Este año voy a ser más valiente cuando...</label>
+                <input type="text" name="p2_frase_valiente">
+
+                <label class="sentence">Este año, voy a decir «sí» cuando...</label>
+                <input type="text" name="p2_frase_si">
+
+                <label class="sentence">Mi consejo para mi mismo este año es...</label>
+                <input type="text" name="p2_frase_consejo">
+
+                <label class="sentence">Este año será especial para mí porque...</label>
+                <input type="text" name="p2_frase_especial">
+            </div>
+        </details>
+
+        <details>
+            <summary>Mi Palabra y Deseo</summary>
+            <div class="details-content">
+                <label>MI PALABRA PARA EL AÑO QUE ME ESPERA</label>
+                <div class="instruction-box">
+                    Elije una palabra para el año que viene. Esta palabra te dará fuerzas para que no abandones tus sueños, y podrás apoyarte en esta palabra cuando necesites un poco de ayuda. Esta palabra caracterizará el año que tienes por delante.
+                </div>
+                <input type="text" name="p2_palabra_anio" style="font-size: 1.5em; text-align: center;">
+
+                <label>DESEO SECRETO</label>
+                <div class="instruction-box">
+                    Echa a volar tu imaginación ¿Cuál es tu deseo secreto para el año que viene?
+                </div>
+                <input type="text" name="p2_deseo_secreto">
+            </div>
+        </details>
+
+        <div style="text-align: center; margin-top: 50px; color: #888;">
+            <p>Creo que este año cualquier cosa es posible.</p>
+        </div>
+
+    </form>
+</div>
+
+<div id="status-bar">
+    <div id="save-status">Listo.</div>
+    <div class="btn-group">
+        <label for="importFile" class="file-upload-label secondary">Importar</label>
+        <input type="file" id="importFile" accept=".json" onchange="importData(this)">
+
+        <button type="button" onclick="exportData()" class="secondary">Bajar</button>
+
+        <button type="button" onclick="clearCurrentData()" class="danger">Borrar</button>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('yc-form');
+    const statusSpan = document.getElementById('save-status');
+    const readOnlyToggle = document.getElementById('readOnlyToggle');
+    const yearSelect = document.getElementById('yearSelect');
+
+    let currentPast = 2025;
+    let currentFuture = 2026;
+    const PREFIX = 'yearCompassData_';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initYearManager();
+    });
+
+    function initYearManager() {
+        const availableKeys = [];
+        for (let i = 0; i < localStorage.length; i++){
+            const key = localStorage.key(i);
+            if (key.startsWith(PREFIX)) availableKeys.push(key);
+        }
+
+        if (availableKeys.length === 0) {
+            const today = new Date();
+            const y = today.getFullYear();
+            if (today.getMonth() > 6) { currentPast = y; currentFuture = y + 1; }
+            else { currentPast = y - 1; currentFuture = y; }
+        } else {
+            availableKeys.sort();
+            const lastKey = availableKeys[availableKeys.length - 1];
+            const parts = lastKey.split('_');
+            currentPast = parseInt(parts[1]);
+            currentFuture = parseInt(parts[2]);
+        }
+
+        renderYearSelect();
+        loadCurrentYearData();
+    }
+
+    function renderYearSelect() {
+        yearSelect.innerHTML = '';
+        const keys = new Set();
+        for (let i = 0; i < localStorage.length; i++){
+            if (localStorage.key(i).startsWith(PREFIX)) keys.add(localStorage.key(i));
+        }
+        keys.add(`${PREFIX}${currentPast}_${currentFuture}`);
+
+        Array.from(keys).sort().forEach(key => {
+            const parts = key.split('_');
+            const p = parseInt(parts[1]);
+            const f = parseInt(parts[2]);
+            const option = document.createElement('option');
+            option.value = p;
+            option.text = `${p} » ${f}`;
+            if (p === currentPast) option.selected = true;
+            yearSelect.appendChild(option);
+        });
+    }
+
+    function addNewYear() {
+        const input = prompt("Año que estás CERRANDO (el pasado):", new Date().getFullYear());
+        if (input) {
+            const p = parseInt(input);
+            if (!isNaN(p) && p > 1900 && p < 2100) {
+                currentPast = p;
+                currentFuture = p + 1;
+                renderYearSelect();
+                loadCurrentYearData();
+            } else { alert("Año inválido."); }
+        }
+    }
+
+    function changeYear() {
+        const val = parseInt(yearSelect.value);
+        currentPast = val;
+        currentFuture = val + 1;
+        loadCurrentYearData();
+    }
+
+    function updateDOMYears() {
+        document.querySelectorAll('.val-past').forEach(el => el.textContent = currentPast);
+        document.querySelectorAll('.val-future').forEach(el => el.textContent = currentFuture);
+    }
+
+    function getCurrentKey() { return `${PREFIX}${currentPast}_${currentFuture}`; }
+
+    function loadCurrentYearData() {
+        updateDOMYears();
+        form.reset();
+        const data = JSON.parse(localStorage.getItem(getCurrentKey()));
+        if (data) {
+            Object.keys(data).forEach(k => {
+                const input = form.elements[k];
+                if (input) input.value = data[k];
+            });
+            statusSpan.textContent = `Datos cargados.`;
+        } else {
+            statusSpan.textContent = `Nuevo periodo.`;
+        }
+    }
+
+    form.addEventListener('input', () => {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((v, k) => data[k] = v);
+        localStorage.setItem(getCurrentKey(), JSON.stringify(data));
+        statusSpan.textContent = 'Guardado ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+        if (yearSelect.options.length === 0 || !yearSelect.querySelector(`option[value="${currentPast}"]`)) {
+            renderYearSelect();
+        }
+    });
+
+    function exportData() {
+        const allData = {};
+        let count = 0;
+        for (let i = 0; i < localStorage.length; i++){
+            const key = localStorage.key(i);
+            if (key.startsWith(PREFIX)) {
+                allData[key] = JSON.parse(localStorage.getItem(key));
+                count++;
+            }
+        }
+        if (count === 0) { alert("Nada que exportar."); return; }
+
+        const blob = new Blob([JSON.stringify(allData, null, 2)], {type: "application/json"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `yearcompass_backup_${new Date().toISOString().slice(0,10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    function importData(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const json = JSON.parse(e.target.result);
+                const keys = Object.keys(json);
+                const isNew = keys.some(k => k.startsWith(PREFIX));
+
+                if (isNew) {
+                    keys.forEach(k => { if(k.startsWith(PREFIX)) localStorage.setItem(k, JSON.stringify(json[k])); });
+                    alert("Historial restaurado.");
+                } else {
+                    if (confirm("¿Importar al periodo actual?")) localStorage.setItem(getCurrentKey(), JSON.stringify(json));
+                }
+                initYearManager();
+            } catch (err) { alert("Error en el archivo."); }
+        };
+        reader.readAsText(file);
+        input.value = '';
+    }
+
+    function clearCurrentData() {
+        if(confirm(`¿Borrar respuestas de ${currentPast}-${currentFuture}?`)) {
+            localStorage.removeItem(getCurrentKey());
+            loadCurrentYearData();
+            renderYearSelect();
+        }
+    }
+
+    readOnlyToggle.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            document.body.classList.add('read-only');
+            document.querySelectorAll('details').forEach(d => d.open = true);
+        } else {
+            document.body.classList.remove('read-only');
+        }
+    });
+</script>
+
+</body>
+</html>
