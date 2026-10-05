@@ -51,25 +51,30 @@ una lista de sustituciones deja de sentirse inerte, y los símbolos
 parecen decir algo.</p>
 <p>El MIU es un sistema de reescritura. También cabe verlo como máquina
 de estados, con la cadena como estado y la regla como transición. Se
-empieza en MI y hay que llegar a MU con cuatro reglas:</p>
+empieza en <code>MI</code> y hay que llegar a <code>MU</code> con cuatro
+reglas:</p>
 <ol type="1">
-<li>Si la cadena termina en I, se le puede agregar una U al final. De MI
-sale MIU.</li>
-<li>Se puede duplicar todo lo que va después de la M. De MIU sale
-MIUIU.</li>
-<li>Tres I seguidas pueden sustituirse por una U. De MIIII sale MUI o
-MIU.</li>
-<li>Dos U seguidas pueden eliminarse. De MUUI sale MI.</li>
+<li>Si la cadena termina en <code>I</code>, se le puede agregar una
+<code>U</code> al final. De <code>MI</code> sale <code>MIU</code>.</li>
+<li>Se puede duplicar todo lo que va después de la <code>M</code>. De
+<code>MIU</code> sale <code>MIUIU</code>.</li>
+<li>Tres <code>I</code> seguidas pueden sustituirse por una
+<code>U</code>. De <code>MIIII</code> sale <code>MUI</code> o
+<code>MIU</code>.</li>
+<li>Dos <code>U</code> seguidas pueden eliminarse. De <code>MUUI</code>
+sale <code>MI</code>.</li>
 </ol>
 <p>El modo mecánico duplica y sustituye, y puede seguir así mucho rato.
 Hace falta pararse en otro sitio y buscar una propiedad que las
 transiciones conservan.</p>
-<p>El número de I nunca es múltiplo de 3. MI trae una, así que al
-dividir entre 3 el resto es 1. La regla que duplica lo que va después de
-la M pasa ese resto de 1 a 2 y, si se vuelve a duplicar, de 2 otra vez a
-1. Sustituir tres I seguidas por una U deja el resto igual. Las otras
-dos reglas no tocan las I. MU tiene cero I, y cero sí es múltiplo de 3.
-Ninguna derivación llega.</p>
+<p>El número de <code>I</code> nunca es múltiplo de 3. <code>MI</code>
+trae una, así que al dividir entre 3 el resto es 1. La regla que duplica
+lo que va después de la <code>M</code> pasa ese resto de 1 a 2 y, si se
+vuelve a duplicar, de 2 otra vez a 1. Sustituir tres <code>I</code>
+seguidas por una <code>U</code> deja el resto igual. Las otras dos
+reglas no tocan las <code>I</code>. <code>MU</code> tiene cero
+<code>I</code>, y cero sí es múltiplo de 3. Ninguna derivación
+llega.</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mo>≢</mo><mn>0</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n(I) \not\equiv 0 \pmod 3</annotation></semantics></math></p>
 <p>La cuenta es aritmética de afuera. El sistema no la contiene. Saltar
 fuera, como lo llama el libro, es hablar del algoritmo en lugar de
@@ -94,12 +99,12 @@ estado. En ese pliegue aparece lo que llamamos un yo. En su vocabulario
 sería un isomorfismo de nivel alto. La descripción corta del sistema se
 porta como un agente. Debajo siguen los símbolos.</p>
 <p>Escher lo muestra con la figura y el fondo. Hofstadter pasa esa
-pareja a los teoremas y a lo que queda fuera del sistema. En el MIU, MU
-está en el fondo y marca el borde.</p>
+pareja a los teoremas y a lo que queda fuera del sistema. En el MIU,
+<code>MU</code> está en el fondo y marca el borde.</p>
 <p>De estos capítulos me quedó una distinción que uso. Ejecutar las
 reglas es una cosa. Describir lo que ninguna secuencia alcanza es otra,
-y con esa descripción se ve por qué MU no aparece. Para el yo,
-Hofstadter pide una distancia del mismo tipo, solo que a otra
+y con esa descripción se ve por qué <code>MU</code> no aparece. Para el
+yo, Hofstadter pide una distancia del mismo tipo, solo que a otra
 escala.</p>
       <nav class="series-nav" aria-label="Gödel, Escher, Bach">
         <a rel="prev" href="/blog/el-vertigo-de-la-autorreferencia/"><span>Anterior</span>El vértigo de la autorreferencia</a>

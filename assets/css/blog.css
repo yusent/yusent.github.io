@@ -138,6 +138,7 @@ pre {
 }
 
 pre code { background: none; padding: 0; }
+:not(pre) > code { white-space: nowrap; }
 
 /* Tablas */
 
