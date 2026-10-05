@@ -1,0 +1,245 @@
+#!/usr/bin/env python3
+"""Genera el blog a partir de los archivos Markdown en blog/.
+
+Cada publicación vive en blog/<slug>/index.md y empieza con un encabezado:
+
+    ---
+    title: Título de la publicación
+    date: 2026-10-05
+    description: Resumen de una o dos líneas (opcional).
+    lang: es          # opcional, "es" por defecto
+    image: portada.jpg  # opcional, imagen para compartir en redes
+    draft: true       # opcional, no se genera ni se lista
+    series: geb       # opcional, serie a la que pertenece
+    ---
+
+Una serie agrupa publicaciones relacionadas y se define en
+blog/series/<slug>/index.md, con 'title' (y 'description' opcional) en el
+encabezado. Su texto es el contexto común: aparece en la página de la serie
+y al inicio de cada publicación que pertenece a ella.
+
+Uso: bin/build-blog   (requiere pandoc)
+"""
+
+import html
+import json
+import re
+import subprocess
+import sys
+import tempfile
+from datetime import date
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+BLOG = ROOT / "blog"
+TEMPLATES = ROOT / "templates"
+SITE_URL = "https://yusent.com"
+DEFAULT_IMAGE = "/assets/images/card.jpg"
+SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+MONTHS = {
+    "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+           "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+    "en": ["January", "February", "March", "April", "May", "June", "July",
+           "August", "September", "October", "November", "December"],
+}
+# Extensiones para que las notas de Obsidian funcionen sin retoques:
+# [[enlaces]], ==resaltado== y saltos de línea simples.
+MARKDOWN = "markdown+wikilinks_title_after_pipe+mark+lists_without_preceding_blankline"
+
+
+def pandoc(*args, stdin=None):
+    result = subprocess.run(
+        ["pandoc", *args], input=stdin, capture_output=True, text=True
+    )
+    if result.returncode != 0:
+        sys.exit(f"pandoc falló:\n{result.stderr}")
+    if result.stderr:
+        print(result.stderr, file=sys.stderr, end="")
+    return result.stdout
+
+
+def read_meta(source):
+    """Devuelve el encabezado de la publicación como texto plano."""
+    with tempfile.NamedTemporaryFile("w", suffix=".txt") as template:
+        template.write("$meta-json$")
+        template.flush()
+        raw = pandoc(str(source), "--quiet", "-f", MARKDOWN, "-t", "plain",
+                     "--template", template.name)
+    return json.loads(raw)
+
+
+def load_series():
+    """Devuelve las series definidas en blog/series/, por slug."""
+    series = {}
+    for source in sorted((BLOG / "series").glob("*/index.md")):
+        slug = source.parent.name
+        if not SLUG_RE.match(slug):
+            sys.exit(f"series/{slug}: el nombre del directorio sólo puede "
+                     "llevar minúsculas, números y guiones")
+        meta = read_meta(source)
+        if not meta.get("title"):
+            sys.exit(f"series/{slug}: falta 'title' en el encabezado")
+        series[slug] = {
+            "source": source,
+            "title": meta["title"],
+            "url": f"/blog/series/{slug}/",
+            "intro": pandoc(str(source), "-f", MARKDOWN, "-t", "html5"),
+            "posts": [],
+        }
+    return series
+
+
+def format_date(day, lang):
+    months = MONTHS.get(lang, MONTHS["es"])
+    if lang == "en":
+        return f"{months[day.month - 1]} {day.day}, {day.year}"
+    return f"{day.day} de {months[day.month - 1]} de {day.year}"
+
+
+def load_post(source, series):
+    slug = source.parent.name
+    if not SLUG_RE.match(slug):
+        sys.exit(f"{slug}: el nombre del directorio sólo puede llevar "
+                 "minúsculas, números y guiones")
+    meta = read_meta(source)
+    for field in ("title", "date"):
+        if not meta.get(field):
+            sys.exit(f"{slug}: falta '{field}' en el encabezado")
+    try:
+        day = date.fromisoformat(str(meta["date"]))
+    except ValueError:
+        sys.exit(f"{slug}: la fecha debe tener el formato AAAA-MM-DD")
+    lang = meta.get("lang") or "es"
+    if meta.get("series") and meta["series"] not in series:
+        sys.exit(f"{slug}: la serie '{meta['series']}' no existe en "
+                 "blog/series/")
+    url = f"/blog/{slug}/"
+    image = meta.get("image") or DEFAULT_IMAGE
+    if not image.startswith(("/", "http")):
+        image = url + image
+    if image.startswith("/"):
+        image = SITE_URL + image
+    return {
+        "source": source,
+        "slug": slug,
+        "title": meta["title"],
+        "description": meta.get("description") or "",
+        "draft": meta.get("draft") is True,
+        "day": day,
+        "date-iso": day.isoformat(),
+        "date-text": format_date(day, lang),
+        "lang": lang,
+        "url": url,
+        "image": image,
+        "series": series.get(meta.get("series")),
+    }
+
+
+def series_variables(post):
+    """Variables de plantilla para el contexto y la navegación de la serie."""
+    series = post["series"]
+    if not series:
+        return []
+    variables = {
+        "series-title": html.escape(series["title"]),
+        "series-url": series["url"],
+        "series-intro": series["intro"],
+    }
+    siblings = series["posts"]
+    position = siblings.index(post)
+    if position > 0:
+        variables["prev-url"] = siblings[position - 1]["url"]
+        variables["prev-title"] = html.escape(siblings[position - 1]["title"])
+    if position < len(siblings) - 1:
+        variables["next-url"] = siblings[position + 1]["url"]
+        variables["next-title"] = html.escape(siblings[position + 1]["title"])
+    if len(siblings) > 1:
+        variables["series-nav"] = "true"
+    return [arg for key, value in variables.items()
+            for arg in ("-V", f"{key}={value}")]
+
+
+def build_post(post):
+    pandoc(
+        str(post["source"]),
+        "-f", MARKDOWN,
+        "-t", "html5",
+        "--template", str(TEMPLATES / "post.html"),
+        "--math-method", "mathml",
+        "--syntax-highlighting", "kate",
+        "--section-divs",
+        "-V", f"lang={post['lang']}",
+        "-V", f"date-iso={post['date-iso']}",
+        "-V", f"date-text={post['date-text']}",
+        "-V", f"canonical={SITE_URL}{post['url']}",
+        "-V", f"og-image={post['image']}",
+        *(["-V", "lang-en=true"] if post["lang"] == "en" else []),
+        *series_variables(post),
+        "-o", str(post["source"].with_suffix(".html")),
+    )
+
+
+def listing_entry(post, show_series):
+    fields = ("title", "description", "url", "date-iso", "date-text")
+    entry = {field: post[field] for field in fields if post[field]}
+    if show_series and post["series"]:
+        entry["series-title"] = post["series"]["title"]
+        entry["series-url"] = post["series"]["url"]
+    return entry
+
+
+def build_listing(posts, url, source=None, show_series=True):
+    """Genera una página con una lista de publicaciones.
+
+    Sin 'source' es el índice del blog; con 'source' es la página de una
+    serie, cuyo texto se muestra antes de la lista.
+    """
+    meta = {"posts": [listing_entry(post, show_series) for post in posts]}
+    if source:
+        meta["is-series"] = True
+    else:
+        meta["title"] = "Blog"
+        meta["description"] = "Textos y ensayos de Yusent Chig"
+    with tempfile.NamedTemporaryFile("w", suffix=".json") as metadata:
+        json.dump(meta, metadata)
+        metadata.flush()
+        pandoc(
+            *([str(source)] if source else []),
+            "-f", MARKDOWN,
+            "-t", "html5",
+            "--template", str(TEMPLATES / "listing.html"),
+            "--metadata-file", metadata.name,
+            "-V", f"canonical={SITE_URL}{url}",
+            "-V", f"og-image={SITE_URL}{DEFAULT_IMAGE}",
+            "-o", str(ROOT / url.strip("/") / "index.html"),
+            stdin=None if source else "",
+        )
+
+
+def main():
+    series = load_series()
+    posts = [load_post(source, series)
+             for source in sorted(BLOG.glob("*/index.md"))]
+    published = [p for p in posts if not p["draft"]]
+    published.sort(key=lambda p: (p["day"], p["slug"]), reverse=True)
+    # Dentro de una serie las publicaciones van en orden de lectura.
+    for post in reversed(published):
+        if post["series"]:
+            post["series"]["posts"].append(post)
+    for post in published:
+        build_post(post)
+        print(f"✓ {post['url']}")
+    for post in posts:
+        if post["draft"]:
+            post["source"].with_suffix(".html").unlink(missing_ok=True)
+            print(f"– {post['url']} (borrador, omitido)")
+    for entry in series.values():
+        build_listing(entry["posts"], entry["url"], source=entry["source"],
+                      show_series=False)
+        print(f"✓ {entry['url']} ({len(entry['posts'])} publicaciones)")
+    build_listing(published, "/blog/")
+    print(f"✓ /blog/ ({len(published)} publicaciones)")
+
+
+if __name__ == "__main__":
+    main()

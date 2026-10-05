@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>El vértigo de la autorreferencia · Yusent Chig</title>
+  <meta name="description" content="Notas sobre la introducción de Gödel, Escher, Bach: bucles extraños, programas que se imprimen a sí mismos y lo que la lógica no alcanza a ver.">
+  <meta property="og:description" content="Notas sobre la introducción de Gödel, Escher, Bach: bucles extraños, programas que se imprimen a sí mismos y lo que la lógica no alcanza a ver.">
+  <meta name="author" content="Yusent Chig">
+  <meta property="og:site_name" content="Yusent Chig">
+  <meta property="og:title" content="El vértigo de la autorreferencia">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yusent.com/blog/el-vertigo-de-la-autorreferencia/">
+  <meta property="og:image" content="https://yusent.com/assets/images/card.jpg">
+  <meta property="article:published_time" content="2026-03-26">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://yusent.com/blog/el-vertigo-de-la-autorreferencia/">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Inter:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Yusent Chig</a>
+    <nav><a href="/blog/">Blog</a></nav>
+  </header>
+  <main>
+    <article>
+      <header class="post-header">
+        <h1>El vértigo de la autorreferencia</h1>
+        <p class="subtitle">Un ouroboros entre código, arte y lógica</p>
+        <time datetime="2026-03-26">26 de marzo de 2026</time>
+      </header>
+      <aside class="series">
+        <p class="kicker">Serie: <a href="/blog/series/geb/">Gödel, Escher, Bach</a></p>
+<p>Coordino un club de lectura en el que estamos leyendo <em>Gödel,
+Escher, Bach</em>, de Douglas Hofstadter, y escribo un ensayo por cada
+fragmento que leemos.</p>
+<p>El libro se publicó en 1979 y entrelaza la lógica de Kurt Gödel, los
+grabados de M. C. Escher y la música de J. S. Bach para preguntarse cómo
+puede surgir una mente a partir de piezas que no piensan. Estas notas
+recogen las ideas que me provoca cada lectura, varias de ellas vistas
+desde mi oficio de programador, así que se pueden leer sin haber abierto
+el libro.</p>
+        <p><a href="/blog/series/geb/">Ver todas las notas de la serie</a></p>
+      </aside>
+<p>Gödel, Escher y Bach parecen hablar idiomas distintos, pero en la
+introducción del libro Hofstadter encuentra en los tres un mismo
+fenómeno, al que llama <em>bucle extraño</em>. Ocurre cuando, al subir o
+bajar por los niveles de un sistema, uno se encuentra de vuelta en el
+punto de partida.</p>
+<p>Bach lo hizo con un canon que parece subir de tono sin detenerse
+nunca. Escher dibujó escaleras por las que se asciende sin parar y que
+aun así no llevan a ningún lado. Gödel construyó una afirmación
+matemática que habla de sí misma, y con ella demostró que las
+matemáticas siempre tendrán verdades que no pueden probarse.</p>
+<section id="un-autor-soñado-por-su-personaje" class="level2">
+<h2>Un autor soñado por su personaje</h2>
+<p>Para entender el bucle me sirve un ejercicio de pensamiento basado en
+dos de los principios herméticos.</p>
+<p>El primero es el mentalismo, “todo es mente”. Imaginemos a un
+escritor que crea un personaje. Para ese personaje, la mente del
+escritor es su universo entero, su Dios. El segundo es la
+correspondencia, “como es arriba, es abajo”: ese personaje escribe a su
+vez una historia sobre otro personaje, que escribe la suya, y así
+sucesivamente, como en un fractal.</p>
+<p>El giro llega si el último personaje de la cadena es quien termina
+imaginando al autor original. Con eso se cierra un bucle extraño de
+<em>N</em> niveles y la jerarquía se enreda. ¿Quién es el soñador y
+quién es el sueño? Escher capturó esta idea en <em>Manos dibujando</em>,
+donde dos manos se dibujan la una a la otra y desaparece la distinción
+entre creador y creado.</p>
+</section>
+<section id="programas-que-se-escriben-a-sí-mismos" class="level2">
+<h2>Programas que se escriben a sí mismos</h2>
+<p>En el software existen objetos que tienen esta misma magia. Un
+<em>quine</em> es un programa diseñado con un solo propósito, que es
+imprimir su propio código. No calcula nada. Existe como un reflejo
+perfecto de sí mismo.</p>
+<p>Hay una versión extrema, el <a
+href="https://github.com/mame/quine-relay">quine ouroboros</a>: un
+programa en un lenguaje genera un programa en otro lenguaje, que genera
+uno en un tercero, y tras 128 pasos por 128 lenguajes distintos regresa
+al código original. Es la versión digital del <em>Canon per Tonos</em>
+de Bach, que tras seis modulaciones regresa a la tonalidad inicial, pero
+una octava más arriba.</p>
+<p>El bucle también puede salir mal. Cuando un programa entra en una
+recursión que no tiene salida ocurre un <em>stack overflow</em>, un
+desbordamiento de pila. Imaginemos una biblioteca donde para entender un
+libro hay que leer otro, y ese otro manda a uno más. Si la cadena no
+termina, tarde o temprano se acaba el espacio en la mesa para los libros
+abiertos. Ese colapso de memoria es el vértigo de la máquina, el momento
+en que su “mente” finita se topa con un proceso infinito.</p>
+</section>
+<section id="los-lentes-de-la-lógica" class="level2">
+<h2>Los lentes de la lógica</h2>
+<p>Gödel demostró que la demostrabilidad es más débil que la verdad. Hay
+cosas ciertas que las reglas de un sistema simplemente no pueden
+alcanzar.</p>
+<p>Me gusta pensar en la lógica como un par de lentes. Durante siglos
+usamos el lente euclidiano y creímos que dos líneas paralelas nunca se
+cruzan, porque era lo lógico. Al cambiarlo por uno no euclidiano
+descubrimos que sí pueden cruzarse. La “realidad” cambió porque
+cambiamos las bases.</p>
+<p>Las experiencias psicodélicas sugieren algo parecido sobre nosotros
+mismos. Lo que llamamos lógica sería una construcción de nuestra
+estructura cerebral, y al alterar esa arquitectura los lentes habituales
+se rompen. Quizás el determinismo que buscamos en el cosmos, la
+respuesta a la materia oscura o al caos cuántico, esté ahí, y nuestra
+computadora biológica no tenga el software necesario para procesarlo sin
+usar la probabilidad como muleta.</p>
+</section>
+<section id="quién-programa-a-quién" class="level2">
+<h2>¿Quién programa a quién?</h2>
+<p>Si una inteligencia artificial logra modificarse a sí misma, aparece
+la paradoja del barco de Teseo. Si reemplazamos todas las piezas de un
+barco, ¿sigue siendo el mismo barco? Si la IA cambia su propia lógica,
+¿es la misma entidad o una nueva?</p>
+<p>Hay una versión todavía más interesante. Cuando nosotros modificamos
+una IA porque su comportamiento nos dio ideas nuevas, ¿no es la IA la
+que nos está usando para actualizarse? Entramos en lo que Hofstadter
+llama una <em>jerarquía enredada</em>, donde el usuario y la herramienta
+se programan mutuamente.</p>
+<p>Bach, Escher y Gödel invitan a ver la inteligencia como algo más que
+seguir reglas. Incluye la capacidad de “saltar fuera” del sistema para
+cuestionarlo. El subtítulo del libro en español es <em>Un Eterno y
+Grácil Bucle</em>, y al final todos somos parte de él, intentando
+entender el código que nos escribe mientras nosotros mismos intentamos
+escribirlo.</p>
+</section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a href="/blog/">← Todas las publicaciones</a>
+  </footer>
+</body>
+</html>

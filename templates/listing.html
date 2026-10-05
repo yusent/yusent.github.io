@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>$pagetitle$ · Yusent Chig</title>
+$if(description-meta)$
+  <meta name="description" content="$description-meta$">
+  <meta property="og:description" content="$description-meta$">
+$endif$
+  <meta property="og:site_name" content="Yusent Chig">
+  <meta property="og:title" content="$pagetitle$ · Yusent Chig">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="$canonical$">
+  <meta property="og:image" content="$og-image$">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="$canonical$">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Inter:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Yusent Chig</a>
+    <nav><a href="/blog/"$if(is-series)$$else$ aria-current="page"$endif$>Blog</a></nav>
+  </header>
+  <main>
+$if(is-series)$
+    <p class="kicker">Serie</p>
+$endif$
+    <h1>$title$</h1>
+$if(is-series)$
+    <div class="series-intro">
+$body$
+    </div>
+$endif$
+$if(posts)$
+    <ul class="post-list">
+$for(posts)$
+      <li>
+        <time datetime="$posts.date-iso$">$posts.date-text$</time>
+$if(posts.series-title)$
+        <a class="series-tag" href="$posts.series-url$">$posts.series-title$</a>
+$endif$
+        <a class="post-title" href="$posts.url$">$posts.title$</a>
+$if(posts.description)$
+        <p>$posts.description$</p>
+$endif$
+      </li>
+$endfor$
+    </ul>
+$else$
+    <p class="empty">Aún no hay publicaciones.</p>
+$endif$
+  </main>
+$if(is-series)$
+  <footer class="site-footer">
+    <a href="/blog/">← Todas las publicaciones</a>
+  </footer>
+$endif$
+</body>
+</html>
