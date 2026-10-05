@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>El espejo de cristal · Yusent Chig</title>
+  <meta name="description" content="Notas sobre los primeros capítulos de Gödel, Escher, Bach: el acertijo MU, el sistema mg y el punto en que unos símbolos parecen decir algo.">
+  <meta property="og:description" content="Notas sobre los primeros capítulos de Gödel, Escher, Bach: el acertijo MU, el sistema mg y el punto en que unos símbolos parecen decir algo.">
+  <meta name="author" content="Yusent Chig">
+  <meta property="og:site_name" content="Yusent Chig">
+  <meta property="og:title" content="El espejo de cristal">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yusent.com/blog/el-espejo-de-cristal/">
+  <meta property="og:image" content="https://yusent.com/assets/images/card.jpg">
+  <meta property="article:published_time" content="2026-05-08">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://yusent.com/blog/el-espejo-de-cristal/">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Inter:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Yusent Chig</a>
+    <nav><a href="/blog/">Blog</a></nav>
+  </header>
+  <main>
+    <article>
+      <header class="post-header">
+        <h1>El espejo de cristal</h1>
+        <p class="subtitle">Reglas, emergencia y el “yo” en los sistemas
+formales</p>
+        <time datetime="2026-05-08">8 de mayo de 2026</time>
+      </header>
+      <aside class="series">
+        <p class="kicker">Serie: <a href="/blog/series/geb/">Gödel, Escher, Bach</a></p>
+<p>Coordino un club de lectura en el que estamos leyendo <em>Gödel,
+Escher, Bach</em>, de Douglas Hofstadter, y escribo un ensayo por cada
+fragmento que leemos.</p>
+<p>El libro se publicó en 1979 y entrelaza la lógica de Kurt Gödel, los
+grabados de M. C. Escher y la música de J. S. Bach para preguntarse cómo
+puede surgir una mente a partir de piezas que no piensan. Estas notas
+recogen las ideas que me provoca cada lectura, varias de ellas vistas
+desde mi oficio de programador, así que se pueden leer sin haber abierto
+el libro.</p>
+        <p><a href="/blog/series/geb/">Ver todas las notas de la serie</a></p>
+      </aside>
+<p>En los primeros capítulos de <em>Gödel, Escher, Bach</em>, Hofstadter
+vuelve jugable un sistema formal. El Sistema MIU y el Sistema mg
+plantean una duda que quien programa ya conoce. Llega un punto en que
+una lista de sustituciones deja de sentirse inerte, y los símbolos
+parecen decir algo.</p>
+<p>El MIU es un sistema de reescritura. También cabe verlo como máquina
+de estados, con la cadena como estado y la regla como transición. Se
+empieza en MI y hay que llegar a MU. El modo mecánico duplica y
+sustituye, y puede seguir así mucho rato. Hace falta pararse en otro
+sitio y buscar una propiedad que las transiciones conservan.</p>
+<p>El número de I nunca es múltiplo de 3. MI trae una, así que al
+dividir entre 3 el resto es 1. La regla que duplica lo que va después de
+la M pasa ese resto de 1 a 2 y, si se vuelve a duplicar, de 2 otra vez a
+1. Sustituir tres I seguidas por una U deja el resto igual. MU tiene
+cero I, y cero sí es múltiplo de 3. Ninguna derivación llega.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>I</mi><mo stretchy="false" form="postfix">)</mo><mo>≢</mo><mn>0</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mspace width="0.222em"></mspace><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n(I) \not\equiv 0 \pmod 3</annotation></semantics></math></p>
+<p>La cuenta es aritmética de afuera. El sistema no la contiene. Saltar
+fuera, como lo llama el libro, es hablar del algoritmo en lugar de
+ejecutarlo.</p>
+<p>En el capítulo II el Sistema mg separa el símbolo del sentido. La
+cadena <code>--m---g-----</code> se comporta como 2 + 3 = 5. Las letras
+hacen de marcadores. La suma aparece porque hay un isomorfismo entre los
+teoremas del sistema y las sumas verdaderas. Quien lee la cadena
+proyecta sobre ella una estructura que ya conocía.</p>
+<p>Wigner llamó a ese encaje la irrazonable eficacia de la matemática.
+Un juego armado para obedecer reglas termina coincidiendo con una
+operación del mundo. A veces el formalismo existe primero, y el fenómeno
+que lo vuelve legible llega después.</p>
+<p>Al leer esto pensé en el Juego de la Vida de Conway. El MIU es
+estrecho. Cuatro reglas, y un imposible que se demuestra desde fuera. La
+Vida mira cuántas de las ocho vecinas están vivas. De esa cuenta salen
+gliders, y también patrones capaces de calcular. La regla solo habla de
+vecinas. El glider hay que verlo en la cuadrícula.</p>
+<p>Hofstadter lleva el mismo hilo hasta la consciencia, con los bucles
+extraños. Hay configuraciones que procesan información sobre su propio
+estado. En ese pliegue aparece lo que llamamos un yo. En su vocabulario
+sería un isomorfismo de nivel alto. La descripción corta del sistema se
+porta como un agente. Debajo siguen los símbolos.</p>
+<p>Escher lo muestra con la figura y el fondo. Hofstadter pasa esa
+pareja a los teoremas y a lo que queda fuera del sistema. En el MIU, MU
+está en el fondo y marca el borde.</p>
+<p>De estos capítulos me quedó una distinción que uso. Ejecutar las
+reglas es una cosa. Describir lo que ninguna secuencia alcanza es otra,
+y con esa descripción se ve por qué MU no aparece. Para el yo,
+Hofstadter pide una distancia del mismo tipo, solo que a otra
+escala.</p>
+      <nav class="series-nav" aria-label="Gödel, Escher, Bach">
+        <a rel="prev" href="/blog/el-vertigo-de-la-autorreferencia/"><span>Anterior</span>El vértigo de la autorreferencia</a>
+      </nav>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a href="/blog/">← Todas las publicaciones</a>
+  </footer>
+</body>
+</html>
