@@ -115,7 +115,8 @@ mark { background-color: rgba(184, 154, 143, 0.35); color: inherit; }
 
 img, video { max-width: 100%; height: auto; }
 
-figure { margin-left: 0; margin-right: 0; text-align: center; }
+figure { margin: 2rem 0; text-align: center; }
+figure img { max-height: 24rem; }
 figcaption { color: var(--muted); font-size: 0.85rem; }
 
 /* Código */

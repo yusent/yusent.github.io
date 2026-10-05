@@ -8,7 +8,9 @@ description: "Notas sobre la introducción de Gödel, Escher, Bach: bucles extra
 
 Gödel, Escher y Bach parecen hablar idiomas distintos, pero en la introducción del libro Hofstadter encuentra en los tres un mismo fenómeno, al que llama *bucle extraño*. Ocurre cuando, al subir o bajar por los niveles de un sistema, uno se encuentra de vuelta en el punto de partida.
 
-Bach lo hizo con un canon que parece subir de tono sin detenerse nunca. Escher dibujó escaleras por las que se asciende sin parar y que aun así no llevan a ningún lado. Gödel construyó una afirmación matemática que habla de sí misma, y con ella demostró que las matemáticas siempre tendrán verdades que no pueden probarse.
+Bach lo hizo con un canon que parece subir de tono sin detenerse nunca. En [*Ascendiendo y descendiendo*](https://mcescher.com/wp-content/uploads/2019/05/LW-435.jpg), Escher dibujó escaleras por las que se asciende sin parar y que aun así no llevan a ningún lado. Gödel construyó una afirmación matemática que habla de sí misma, y con ella demostró que las matemáticas siempre tendrán verdades que no pueden probarse.
+
+![La escalera de Penrose, la figura imposible en la que se inspiran las escaleras de Escher.](escalera-de-penrose.svg)
 
 ## Un autor soñado por su personaje
 
@@ -16,13 +18,15 @@ Para entender el bucle me sirve un ejercicio de pensamiento basado en dos de los
 
 El primero es el mentalismo, "todo es mente". Imaginemos a un escritor que crea un personaje. Para ese personaje, la mente del escritor es su universo entero, su Dios. El segundo es la correspondencia, "como es arriba, es abajo": ese personaje escribe a su vez una historia sobre otro personaje, que escribe la suya, y así sucesivamente, como en un fractal.
 
-El giro llega si el último personaje de la cadena es quien termina imaginando al autor original. Con eso se cierra un bucle extraño de *N* niveles y la jerarquía se enreda. ¿Quién es el soñador y quién es el sueño? Escher capturó esta idea en *Manos dibujando*, donde dos manos se dibujan la una a la otra y desaparece la distinción entre creador y creado.
+El giro llega si el último personaje de la cadena es quien termina imaginando al autor original. Con eso se cierra un bucle extraño de *N* niveles y la jerarquía se enreda. ¿Quién es el soñador y quién es el sueño? Escher capturó esta idea en [*Manos dibujando*](https://mcescher.com/wp-content/uploads/2019/04/LW-355.jpg), donde dos manos se dibujan la una a la otra y desaparece la distinción entre creador y creado.
 
 ## Programas que se escriben a sí mismos
 
 En el software existen objetos que tienen esta misma magia. Un *quine* es un programa diseñado con un solo propósito, que es imprimir su propio código. No calcula nada. Existe como un reflejo perfecto de sí mismo.
 
 Hay una versión extrema, el [quine ouroboros](https://github.com/mame/quine-relay): un programa en un lenguaje genera un programa en otro lenguaje, que genera uno en un tercero, y tras 128 pasos por 128 lenguajes distintos regresa al código original. Es la versión digital del *Canon per Tonos* de Bach, que tras seis modulaciones regresa a la tonalidad inicial, pero una octava más arriba.
+
+![Un ouroboros en un manuscrito alquímico bizantino del siglo XV.](ouroboros.jpg)
 
 El bucle también puede salir mal. Cuando un programa entra en una recursión que no tiene salida ocurre un *stack overflow*, un desbordamiento de pila. Imaginemos una biblioteca donde para entender un libro hay que leer otro, y ese otro manda a uno más. Si la cadena no termina, tarde o temprano se acaba el espacio en la mesa para los libros abiertos. Ese colapso de memoria es el vértigo de la máquina, el momento en que su "mente" finita se topa con un proceso infinito.
 
