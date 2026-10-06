@@ -32,7 +32,7 @@ Las geometrías no euclidianas sirven a Hofstadter para mostrar qué ocurre al c
 
 ## El Contracrostipunctus
 
-El libro alterna cada capítulo con un diálogo entre personajes como Aquiles, la Tortuga y el Cangrejo, a la manera de Lewis Carroll. Entre el capítulo de la figura y el fondo y el de la coherencia, Hofstadter coloca el *Contracrostipunctus*. Ahí el teorema de Gödel se oye como una historia, y el capítulo siguiente la despliega.
+El libro alterna cada capítulo con un diálogo entre personajes como Aquiles, la Tortuga y el Cangrejo, a la manera de [Lewis Carroll](https://es.wikipedia.org/wiki/Lo_que_la_tortuga_le_dijo_a_Aquiles). Entre el capítulo de la figura y el fondo y el de la coherencia, Hofstadter coloca el *Contracrostipunctus*. Ahí el teorema de Gödel se oye como una historia, y el capítulo siguiente la despliega.
 
 El Cangrejo quiere un tocadiscos perfecto, un aparato sin fallas, capaz de reproducir cualquier disco bien grabado. La Tortuga le prepara uno cortado en las frecuencias de resonancia de esa máquina. El título dice, en sustancia, que ese tocadiscos no puede reproducirlo. El disco no está mal grabado. El aparato, tampoco.
 

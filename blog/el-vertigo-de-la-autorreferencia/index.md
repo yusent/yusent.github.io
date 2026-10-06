@@ -22,9 +22,9 @@ El giro llega si el último personaje de la cadena es quien termina imaginando a
 
 ## Programas que se escriben a sí mismos
 
-En el software existen objetos que tienen esta misma magia. Un *quine* es un programa diseñado con un solo propósito, que es imprimir su propio código. No calcula nada. Existe como un reflejo perfecto de sí mismo.
+En el software existen objetos que tienen esta misma magia. Un [*quine*](https://en.wikipedia.org/wiki/Quine_(computing)) es un programa diseñado con un solo propósito, que es imprimir su propio código. No calcula nada. Existe como un reflejo perfecto de sí mismo.
 
-Hay una versión extrema, el [quine ouroboros](https://github.com/mame/quine-relay): un programa en un lenguaje genera un programa en otro lenguaje, que genera uno en un tercero, y tras 128 pasos por 128 lenguajes distintos regresa al código original. Es la versión digital del *Canon per Tonos* de Bach, que tras seis modulaciones regresa a la tonalidad inicial, pero una octava más arriba.
+Hay una versión extrema, el [quine ouroboros](https://github.com/mame/quine-relay): un programa en un lenguaje genera un programa en otro lenguaje, que genera uno en un tercero, y tras 128 pasos por 128 lenguajes distintos regresa al código original. Es la versión digital del [*Canon per Tonos*](https://es.wikipedia.org/wiki/Ofrenda_musical) de Bach, que tras seis modulaciones regresa a la tonalidad inicial, pero una octava más arriba.
 
 ![Un ouroboros en un manuscrito alquímico bizantino del siglo XV.](ouroboros.jpg)
 
@@ -40,7 +40,7 @@ Las experiencias psicodélicas sugieren algo parecido sobre nosotros mismos. Lo 
 
 ## ¿Quién programa a quién?
 
-Si una inteligencia artificial logra modificarse a sí misma, aparece la paradoja del barco de Teseo. Si reemplazamos todas las piezas de un barco, ¿sigue siendo el mismo barco? Si la IA cambia su propia lógica, ¿es la misma entidad o una nueva?
+Si una inteligencia artificial logra modificarse a sí misma, aparece la [paradoja del barco de Teseo](https://es.wikipedia.org/wiki/Paradoja_de_Teseo). Si reemplazamos todas las piezas de un barco, ¿sigue siendo el mismo barco? Si la IA cambia su propia lógica, ¿es la misma entidad o una nueva?
 
 Hay una versión todavía más interesante. Cuando nosotros modificamos una IA porque su comportamiento nos dio ideas nuevas, ¿no es la IA la que nos está usando para actualizarse? Entramos en lo que Hofstadter llama una *jerarquía enredada*, donde el usuario y la herramienta se programan mutuamente.
 

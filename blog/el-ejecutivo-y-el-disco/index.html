@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>El ejecutivo y el disco · Yusent Chig</title>
+  <meta name="description" content="Notas sobre los capítulos V y VI de Gödel, Escher, Bach: la recursividad contada con un ejecutivo al teléfono, y la pregunta de si el significado vive en el mensaje o en quien lo lee.">
+  <meta property="og:description" content="Notas sobre los capítulos V y VI de Gödel, Escher, Bach: la recursividad contada con un ejecutivo al teléfono, y la pregunta de si el significado vive en el mensaje o en quien lo lee.">
+  <meta name="author" content="Yusent Chig">
+  <meta property="og:site_name" content="Yusent Chig">
+  <meta property="og:title" content="El ejecutivo y el disco">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yusent.com/blog/el-ejecutivo-y-el-disco/">
+  <meta property="og:image" content="https://yusent.com/assets/images/card.jpg">
+  <meta property="article:published_time" content="2026-07-14">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://yusent.com/blog/el-ejecutivo-y-el-disco/">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Inter:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Yusent Chig</a>
+    <nav><a href="/blog/">Blog</a></nav>
+  </header>
+  <main>
+    <article>
+      <header class="post-header">
+        <h1>El ejecutivo y el disco</h1>
+        <time datetime="2026-07-14">14 de julio de 2026</time>
+      </header>
+      <aside class="series">
+        <p class="kicker">Serie: <a href="/blog/series/geb/">Gödel, Escher, Bach</a></p>
+<p>Coordino un club de lectura en el que estamos leyendo <a
+href="https://www.goodreads.com/book/show/24113.G_del_Escher_Bach"><em>Gödel,
+Escher, Bach</em></a>, de Douglas Hofstadter, y escribo un ensayo por
+cada fragmento que leemos.</p>
+<p>El libro se publicó en 1979 y entrelaza la lógica de Kurt Gödel, los
+grabados de M. C. Escher y la música de J. S. Bach para preguntarse cómo
+puede surgir una mente a partir de piezas que no piensan. Estas notas
+recogen las ideas que me provoca cada lectura, varias de ellas vistas
+desde mi oficio de programador, así que se pueden leer sin haber abierto
+el libro.</p>
+        <p><a href="/blog/series/geb/">Ver todas las notas de la serie</a></p>
+      </aside>
+<p>Al llegar a los capítulos V y VI de <em>Gödel, Escher, Bach</em> me
+encontré con dos preguntas que no se dejan agarrar: cómo un proceso se
+construye sobre sí mismo, y dónde está realmente el significado. Las leí
+con la costumbre de armar arquitecturas de software metida en la
+lectura. Vi en Hofstadter pasajes de un brillo que quiero guardar, y
+también un lugar donde su visión choca con la manera en que, de verdad,
+construimos e interpretamos.</p>
+<p>En el capítulo V la recursividad aparece, y es hermosa. Algo se
+define con una versión de sí mismo. Hofstadter la cuenta con un
+ejecutivo al teléfono. Está con A cuando llama B, y deja a A en espera.
+Llama C, y B espera también. Cuando C cuelga, vuelve a B, y solo
+entonces a A. Si en medio de B entra D, B regresa a la espera hasta que
+D termine. Desde el software, dejar una llamada en espera para tomar la
+que entra suena a cola, a atender el flujo conforme llega. Hofstadter
+hace lo contrario: el ejecutivo regresa al revés, de la última llamada a
+la primera, y esa vuelta es una pila. El matiz que a mí me importa, y
+que el teléfono del libro deja en el aire, es la dependencia. El
+ejecutivo pausa al cliente, llama a su supervisor por una duda, y el
+supervisor llama a soporte. Nadie puede contestarle al cliente hasta que
+esa cadena regrese, de adentro hacia afuera. Las oraciones en alemán,
+como bien dice el libro, caminan así. La mente acumula el contexto hasta
+que los verbos llegan al final y cada idea puede cerrarse.</p>
+<p>La magia, con todo, no está solo en pausar tareas. Está en sacar lo
+inagotable de algo que se puede escribir entero. Me fui de inmediato al
+<a href="https://es.wikipedia.org/wiki/Juego_de_la_vida">Juego de la
+Vida</a> de Conway. Un estado inicial simple, un puñado de reglas, y de
+ahí una complejidad de dibujo y de conducta que no se acaba. No es la
+misma máquina: en la Vida no hay una llamada metida dentro de otra. El
+vértigo, para mí, sí lo es. Reglas que caben en una servilleta, y un
+universo que no se termina de mirar.</p>
+<p>El capítulo VI abre un abismo. ¿El significado está dentro del
+mensaje, o lo construye quien lo lee?</p>
+<p>Hofstadter se inclina con fuerza hacia lo primero. Un mensaje lo
+bastante complejo, hecho de lógica y de matemáticas, traería una fuerza
+capaz de dictar su propio significado. Si mandamos un disco al espacio,
+cualquier inteligencia sacaría de él la misma lectura. Es una visión
+hermosa, muy cercana a la manera en que <a
+href="https://www.goodreads.com/book/show/20518872-the-three-body-problem"><em>El
+problema de los tres cuerpos</em></a> hace encontrarse a dos especies
+sobre una física común. Él mismo imagina a alguien que atravesaría ese
+disco sin ver en él un mensaje, y todavía confía en que el significado
+está en el objeto, y en que se repetiría para cualquiera que merezca
+llamarse inteligente.</p>
+<p>Ahí me separo del libro, y no un poco. Yo me quedo del lado
+constructivista. Un mensaje, por armado que esté, no es más que marcas
+en un papel o variaciones en una onda. El significado no se extrae. Se
+construye, con la maquinaria sensorial de quien lo recibe, con su mente
+y con su contexto. No hay una ruta directa entre el símbolo y la
+idea.</p>
+<p>Si una inteligencia no vive el tiempo en secuencia, como plantea Ted
+Chiang de un modo que todavía me deslumbra en <a
+href="https://www.goodreads.com/book/show/223380.Stories_of_Your_Life_and_Others"><em>La
+historia de tu vida</em></a>, nuestra lógica puede quedarse en ruido. No
+podemos olvidar que la forma en que entendemos el universo sale de una
+biología, la de este planeta.</p>
+<p>Uno querría que la estructura pura nos salvara. Compartimos el
+universo, al fin y al cabo, y las leyes que lo rigen. Hofstadter confía
+en que la conciencia puede saltar fuera de las reglas y reconocer
+verdades que otra mente también vería. Cuando lo leo así, siento el
+teorema de Gödel detrás, aunque este capítulo apoya la apuesta en algo
+más simple: que toda inteligencia natural respondería igual ante la
+misma estructura. Y eso, me parece, pasa de largo un problema de fondo.
+La resolución de lo que sabemos.</p>
+<p>Aunque otra especie mire el mismo cielo, nada garantiza que lo vea
+con la misma precisión. Una podría entender la gravedad a la manera de
+Newton, levantar civilizaciones enteras con ese modelo y no necesitar
+jamás a Einstein. No son mundos que se cancelen. Uno le basta a quien
+vive en su escala. Y aun así no viajan con los mismos supuestos.</p>
+<p>En un mensaje simple la diferencia casi no se nota. Cuando la
+complejidad crece, y los conceptos se apilan unos sobre otros, como en
+la recursión, ese desfase chico del principio se vuelve una grieta.
+Arriba, el mensaje ya no se deja leer. Tratamos la realidad objetiva
+como si fuera un molde universal, y es un mapa. Cada especie lo dibuja
+con las herramientas que tiene, con su biología, y con la versión de la
+ciencia que le tocó en ese momento.</p>
+<p>Hofstadter nos invita a un universo donde las matemáticas serían el
+puente absoluto. A mí me maravilla otra cosa. No que el mensaje guarde
+el significado adentro, sino que nuestras mentes tengan la maquinaria
+para levantar mundos enteros a partir de unos símbolos.</p>
+      <nav class="series-nav" aria-label="Gödel, Escher, Bach">
+        <a rel="prev" href="/blog/el-espejo-de-la-razon/"><span>Anterior</span>El espejo de la razón</a>
+      </nav>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a href="/blog/">← Todas las publicaciones</a>
+  </footer>
+</body>
+</html>

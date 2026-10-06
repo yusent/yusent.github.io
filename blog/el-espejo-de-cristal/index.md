@@ -6,7 +6,7 @@ series: geb
 description: "Notas sobre los primeros capítulos de Gödel, Escher, Bach: el acertijo MU, el sistema mg y el momento en que unas reglas inertes empiezan a parecer que tienen sentido."
 ---
 
-En los primeros capítulos de *Gödel, Escher, Bach*, Hofstadter toma la lógica simbólica y la vuelve un juego en el que se puede perder. El Sistema MIU y el Sistema mg sirven para dejar planteada una pregunta que también aparece al escribir programas. ¿En qué momento un conjunto de reglas inertes empieza a parecer que posee sentido, o incluso algo parecido a una consciencia?
+En los primeros capítulos de *Gödel, Escher, Bach*, Hofstadter toma la lógica simbólica y la vuelve un juego en el que se puede perder. El [Sistema MIU](https://en.wikipedia.org/wiki/MU_puzzle) y el Sistema mg sirven para dejar planteada una pregunta que también aparece al escribir programas. ¿En qué momento un conjunto de reglas inertes empieza a parecer que posee sentido, o incluso algo parecido a una consciencia?
 
 El MIU se deja mirar como una máquina de estados: cada cadena es una configuración, cada regla una transición. El acertijo pide producir `MU` a partir de `MI` con cuatro reglas:
 
@@ -23,9 +23,9 @@ Se parte de `MI`, una sola `I`, resto 1. La regla que duplica lo que sigue a la 
 
 En el capítulo II, el Sistema mg desplaza la pregunta del alcance al significado. La cadena `--m---g-----` se comporta como 2 + 3 = 5, pero las letras no guardan la suma en su interior. Lo que hay es un isomorfismo. Quien la lee proyecta sobre el sistema formal una estructura que ya conocía, y solo entonces los símbolos parecen decir algo.
 
-De ahí la sensación que Wigner llamó la irrazonable eficacia de la matemática. Un sistema inventado para obedecer reglas termina, a menudo, por ser el espejo de una ley que el mundo todavía no nos había mostrado. A veces el formalismo existe primero. El fenómeno físico que le da un significado activo llega después, y encuentra el mapa ya dibujado.
+De ahí la sensación que Wigner llamó [la irrazonable eficacia de la matemática](https://es.wikipedia.org/wiki/La_irrazonable_eficacia_de_la_Matem%C3%A1tica_en_las_Ciencias_Naturales). Un sistema inventado para obedecer reglas termina, a menudo, por ser el espejo de una ley que el mundo todavía no nos había mostrado. A veces el formalismo existe primero. El fenómeno físico que le da un significado activo llega después, y encuentra el mapa ya dibujado.
 
-La conexión con el Juego de la Vida de Conway se me hizo inevitable. Al lado del MIU, rígido y cerrado por un invariante, el autómata de Conway enseña el otro extremo: una complejidad que parece viva, salida de una regla mínima. La celda atiende a la densidad de sus vecinas. De esa cuenta nacen gliders y naves, y también construcciones capaces de calcular. La regla no dice que haya que moverse, ni reproducirse, ni procesar información. Esas conductas aparecen cuando la cuadrícula lleva suficiente tiempo iterando.
+La conexión con el [Juego de la Vida](https://es.wikipedia.org/wiki/Juego_de_la_vida) de Conway se me hizo inevitable. Al lado del MIU, rígido y cerrado por un invariante, el autómata de Conway enseña el otro extremo: una complejidad que parece viva, salida de una regla mínima. La celda atiende a la densidad de sus vecinas. De esa cuenta nacen gliders y naves, y también construcciones capaces de calcular. La regla no dice que haya que moverse, ni reproducirse, ni procesar información. Esas conductas aparecen cuando la cuadrícula lleva suficiente tiempo iterando.
 
 Si un sistema tan parco genera estructuras que se desplazan y que computan, la hipótesis de Hofstadter se vuelve más hospitalaria. La conciencia sería un isomorfismo de alto nivel. Debajo siguen interacciones materiales. En cierto pliegue, el sistema procesa información sobre su propio estado, un bucle extraño, y de ese cierre sale la ilusión de un yo puesto en el centro.
 
