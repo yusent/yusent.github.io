@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Partir la realidad · Yusent Chig</title>
+  <meta name="description" content="Notas sobre los capítulos IX y X de Gödel, Escher, Bach: el Zen que desconfía del lenguaje, los niveles de descripción de una computadora y las capas con las que partimos la realidad para entenderla.">
+  <meta property="og:description" content="Notas sobre los capítulos IX y X de Gödel, Escher, Bach: el Zen que desconfía del lenguaje, los niveles de descripción de una computadora y las capas con las que partimos la realidad para entenderla.">
+  <meta name="author" content="Yusent Chig">
+  <meta property="og:site_name" content="Yusent Chig">
+  <meta property="og:title" content="Partir la realidad">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yusent.com/blog/partir-la-realidad/">
+  <meta property="og:image" content="https://yusent.com/assets/images/card.jpg">
+  <meta property="article:published_time" content="2026-09-08">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://yusent.com/blog/partir-la-realidad/">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Inter:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Yusent Chig</a>
+    <nav><a href="/blog/">Blog</a></nav>
+  </header>
+  <main>
+    <article>
+      <header class="post-header">
+        <h1>Partir la realidad</h1>
+        <time datetime="2026-09-08">8 de septiembre de 2026</time>
+      </header>
+      <aside class="series">
+        <p class="kicker">Serie: <a href="/blog/series/geb/">Gödel, Escher, Bach</a></p>
+<p>Coordino un club de lectura en el que estamos leyendo <a
+href="https://www.goodreads.com/book/show/24113.G_del_Escher_Bach"><em>Gödel,
+Escher, Bach</em></a>, de Douglas Hofstadter, y escribo un ensayo por
+cada fragmento que leemos.</p>
+<p>El libro se publicó en 1979 y entrelaza la lógica de Kurt Gödel, los
+grabados de M. C. Escher y la música de J. S. Bach para preguntarse cómo
+puede surgir una mente a partir de piezas que no piensan. Estas notas
+recogen las ideas que me provoca cada lectura, varias de ellas vistas
+desde mi oficio de programador, así que se pueden leer sin haber abierto
+el libro.</p>
+        <p><a href="/blog/series/geb/">Ver todas las notas de la serie</a></p>
+      </aside>
+<p>En los capítulos IX y X, Hofstadter junta el Zen, las matemáticas y
+la computadora. Los tres le sirven para decir una cosa que se nos
+olvida: partimos la realidad para poder entenderla, y esas divisiones,
+tarde o temprano, fallan.</p>
+<p>En “Mumon y Gödel” entra el Zen, de la mano de Mumon, el maestro que
+compiló los koans del <a
+href="https://en.wikipedia.org/wiki/The_Gateless_Barrier">Mumonkan</a>,
+y entra desconfiando del lenguaje y de la lógica. La verdad, dice, no
+cabe en las palabras. Nombrar un objeto ya es aislarlo, ponerle un borde
+a una realidad que no trae los bordes puestos.</p>
+<p>Eso, que parece de monasterio, se parece a lo que Gödel encuentra en
+los sistemas formales. Cuando el sistema es lo bastante rico para
+contener sus propias reglas, aparecen proposiciones verdaderas que no
+puede demostrar. No le pasa a cualquier juego: el cálculo proposicional,
+que veníamos mirando, sí se cierra. Le pasa al intento de explicar el
+todo desde dentro. El lenguaje vive de ese intento. Siempre se escapa
+algo.</p>
+<p>Si el todo no entra, nos quedan las partes, y las partes se apilan.
+En “Niveles de descripción y sistemas de computadoras”, Hofstadter usa
+la computadora como quien usa un edificio de pisos. En ingeniería
+hacemos lo mismo. El <a
+href="https://es.wikipedia.org/wiki/Modelo_OSI">modelo OSI</a>, un
+lenguaje de alto nivel: subimos de piso para no vivir entre transistores
+y electrones. Escribimos las reglas de arriba confiando en que abajo
+todo cumple.</p>
+<p>Yo llevo tiempo pensando los fenómenos así, por capas de abstracción.
+De la más básica a la más compleja: física, química, biológica,
+psicológica y sociológica. Cuando uno pregunta por qué pasó algo, hay
+una infinidad de respuestas repartidas a lo largo de ese espectro, y
+todas describen lo mismo desde un piso distinto. Feynman hablaba de algo
+parecido, de una cadena infinita de respuestas detrás de cada por
+qué.</p>
+<p>Después usamos las mismas palabras para cosas que no viven en el
+mismo piso. Hablamos de un sistema como si fuera un organismo, o una
+persona, y por debajo hay silicio y corriente. En software eso tiene
+nombre: <a
+href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">abstracciones
+con fugas</a>. Un detalle del nivel de abajo, una física, una química,
+rompe la capa de arriba y te obliga a bajar.</p>
+<p>Con nosotros pasa igual. Juzgamos la conducta desde la capa
+psicológica, o desde la social, que es la más alta y la más cómoda. Y un
+juez no falla igual al empezar la sesión que cuando lleva horas sin
+comer o sin un descanso. El veredicto se mueve. Somos sistemas físicos.
+Debajo de la decisión que nos parece racional sigue el cuerpo.</p>
+<p>El <a href="https://es.wikipedia.org/wiki/Juego_de_la_vida"><em>Game
+of Life</em></a> lo muestra sin discurso. Unas reglas mínimas de
+nacimiento y de muerte, y aparecen los gliders. Un glider no es una
+célula ni una ley. Es el significado que le ponemos, desde arriba, a una
+serie de luces que se prenden y se apagan.</p>
+<p>Esos sistemas no perdonan. Como en el <a
+href="https://es.wikipedia.org/wiki/Problema_de_los_tres_cuerpos">problema
+de los tres cuerpos</a>, o en un algoritmo de encriptación, una
+diferencia mínima en el estado de abajo se agranda, y arriba el
+resultado es otro. La capa alta presume de orden. Abajo, una coma movida
+le cambia el destino.</p>
+<p>La parcialidad del conocimiento, esa de la que habla el Zen, no se
+queda en el templo. Es también una condición de las matemáticas, y de la
+física. Vivimos en las capas de arriba, inventando nombres, libre
+albedrío, conciencia, para algo que en el fondo es un caos determinista.
+Y no tenemos palabras que lo digan entero.</p>
+      <nav class="series-nav" aria-label="Gödel, Escher, Bach">
+        <a rel="prev" href="/blog/la-sala-de-maquinas/"><span>Anterior</span>La sala de máquinas</a>
+      </nav>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a href="/blog/">← Todas las publicaciones</a>
+  </footer>
+</body>
+</html>
