@@ -1,0 +1,22 @@
+---
+title: Algo de arqueología
+date: 2026-09-22
+series: geb
+description: "Notas sobre los capítulos XI y XII de Gödel, Escher, Bach: la célula abuela, lo que las abejas sí aprenden, los isomorfismos entre mentes y el misterio que sigue donde Hofstadter lo dejó."
+---
+
+Leer *Gödel, Escher, Bach* casi medio siglo después tiene algo de arqueología. Hofstadter escribía cuando la inteligencia artificial simbólica ocupaba la imaginación científica, y la neurociencia todavía no tenía las herramientas que ahora damos por sentadas. Quiso reconciliar la elegancia de los sistemas formales con el caos biológico del cerebro. Se acercó. También simplificó de más. En los capítulos XI y XII esa simplificación se deja ver, justo en el modo en que procesamos, representamos y compartimos lo que sabemos.
+
+En el XI aparece la [célula abuela](https://en.wikipedia.org/wiki/Grandmother_cell), y la imagen se queda: una neurona que dispararía solo si entra tu abuela. Él la cuenta casi como un chiste, y se inclina por una red de neuronas antes que por un módulo ya clavado. Aun así, en 2005 la neurona de Jennifer Aniston mostró que una sola célula puede cargar una representación abstracta, esa persona, a través de fotos distintas. Lo que se vio después es que el vínculo no es de piedra. Si la cara queda atada a una relación nueva, la selectividad se mueve, y la neurona aprende el lazo. El repertorio no está fijado. Como en el software, el cerebro no reserva un bloque de memoria rígido para cada concepto. Trabaja con punteros y con pesos distribuidos, y los reescribe en el momento en que la asociación nace.
+
+La misma rigidez se le cuela al mirar otras especies. Está el [baile de las abejas](https://es.wikipedia.org/wiki/Danza_de_las_abejas), y está la [avispa](https://es.wikipedia.org/wiki/Sphex) que, si le corres el grillo mientras inspecciona el nido, vuelve a empezar el rito desde el umbral. De ahí el libro concluye que un insecto no fabrica clases nuevas, que vive de un repertorio que ya trae. Las abejas, se ha visto, aprenden igualdad y diferencia, y se llevan esa regla a estímulos que no habían encontrado. Generalizar no es un lujo de la corteza humana. También sale de una red pequeña, cuando la red es hábil.
+
+En el XII la apuesta cambia de escala. Compartimos más estructura mental de la que solemos advertir, unos isomorfismos parciales. Casi siempre miramos las diferencias, porque así nos contamos quiénes somos. El cuerpo y el entorno mandan más de lo que esa historia admite.
+
+A mí me pasa con mi esposa. Compartimos gran parte del día, y a veces descubrimos que estamos exactamente igual, cada quien con una justificación distinta, lógica o psicológica, muy bien armada. De cerca, la respuesta suele ser más simple y estar en la base física: la dieta, las horas de sueño, el clima, a veces la calidad del agua o del aire. Reducir la coincidencia a ese ancla no le quita mérito a la experiencia. Es reconocer que mentes sometidas a las mismas entradas tienden a dar resultados isomórficos.
+
+La palabra [Bandersnatch](https://es.wikipedia.org/wiki/Jabberwocky) me hizo lo mismo en otro piso. Carroll la inventó para una criatura. Yo la leí en el libro y me apareció enseguida la [película de *Black Mirror*](https://es.wikipedia.org/wiki/Black_Mirror:_Bandersnatch): un programador atrapado en un árbol de decisiones que termina por darse cuenta de que alguien, afuera, lo observa. Un bucle extraño. Hofstadter no podía prever esa película. La red de asociaciones sí podía llegar ahí, y no solo en mí. Por eso el lenguaje no se estudia en frío, con un diccionario. Es una red enorme que la sociedad entera amasa a la vez. Una traducción literaria, un chiste, se caen al cambiar de idioma cuando lo que se muda es la palabra y no el subgrafo de contexto que la sostiene.
+
+De ahí, Descartes no queda tan lejos. En las [*Meditaciones metafísicas*](https://es.wikipedia.org/wiki/Meditaciones_metaf%C3%ADsicas) la lógica se muerde la cola: la claridad de las ideas prueba a Dios, y Dios garantiza que la claridad no engaña. Visto desde este libro, es un bucle extraño defectuoso, uno que no sabe habitar su propio hueco.
+
+Hemos afinado mucho el mapa de las representaciones, y la manera en que una red distribuida las usa. Eso no es el problema duro. Saber qué está representado, y para qué sirve, no dice por qué hay alguien a quien eso le pasa. El misterio de la conciencia sigue donde Hofstadter lo dejó.
