@@ -90,6 +90,8 @@ strong { font-weight: 600; }
   margin-bottom: 0.75rem;
 }
 
+.subtitle em { font-style: normal; }
+
 time { color: var(--muted); font-size: 0.85rem; }
 
 blockquote {
