@@ -12,25 +12,19 @@ Bach lo hizo con un canon que parece subir de tono sin detenerse nunca. En [*Asc
 
 ![La escalera de Penrose, la figura imposible en la que se inspiran las escaleras de Escher.](escalera-de-penrose.svg)
 
-## Un autor soñado por su personaje
-
 Para entender el bucle me sirve un ejercicio de pensamiento basado en dos de los principios herméticos.
 
 El primero es el mentalismo, "todo es mente". Imaginemos a un escritor que crea un personaje. Para ese personaje, la mente del escritor es su universo entero, su Dios. El segundo es la correspondencia, "como es arriba, es abajo": ese personaje escribe a su vez una historia sobre otro personaje, que escribe la suya, y así sucesivamente, como en un fractal.
 
 El giro llega si el último personaje de la cadena es quien termina imaginando al autor original. Con eso se cierra un bucle extraño de *N* niveles y la jerarquía se enreda. ¿Quién es el soñador y quién es el sueño? Escher capturó esta idea en [*Manos dibujando*](https://en.wikipedia.org/wiki/Drawing_Hands), donde dos manos se dibujan la una a la otra y desaparece la distinción entre creador y creado.
 
-## Programas que se escriben a sí mismos
-
-En el software existen objetos que tienen esta misma magia. Un [*quine*](https://en.wikipedia.org/wiki/Quine_(computing)) es un programa diseñado con un solo propósito, que es imprimir su propio código. No calcula nada. Existe como un reflejo perfecto de sí mismo.
+En el software existen objetos que tienen esta misma magia. Un [*quine*](https://en.wikipedia.org/wiki/Quine_(computing)) es un programa diseñado con un solo propósito, que es imprimir su propio código. No calcula nada. Existe solo como un reflejo de sí mismo.
 
 Hay una versión extrema, el [quine ouroboros](https://github.com/mame/quine-relay): un programa en un lenguaje genera un programa en otro lenguaje, que genera uno en un tercero, y tras 128 pasos por 128 lenguajes distintos regresa al código original. Es la versión digital del [*Canon per Tonos*](https://es.wikipedia.org/wiki/Ofrenda_musical) de Bach, que tras seis modulaciones regresa a la tonalidad inicial, pero una octava más arriba.
 
 ![Un ouroboros en un manuscrito alquímico bizantino del siglo XV.](ouroboros.jpg)
 
-El bucle también puede salir mal. Cuando un programa entra en una recursión que no tiene salida ocurre un *stack overflow*, un desbordamiento de pila. Imaginemos una biblioteca donde para entender un libro hay que leer otro, y ese otro manda a uno más. Si la cadena no termina, tarde o temprano se acaba el espacio en la mesa para los libros abiertos. Ese colapso de memoria es el vértigo de la máquina, el momento en que su "mente" finita se topa con un proceso infinito.
-
-## Los lentes de la lógica
+Cuando un programa entra en una recursión que no tiene salida ocurre un *stack overflow*, un desbordamiento de pila. Imaginemos una biblioteca donde para entender un libro hay que leer otro, y ese otro manda a uno más. Si la cadena no termina, tarde o temprano se acaba el espacio en la mesa para los libros abiertos. Ese colapso de memoria es el vértigo de la máquina, el momento en que su "mente" finita se topa con un proceso infinito.
 
 Gödel demostró que la demostrabilidad es más débil que la verdad. Hay cosas ciertas que las reglas de un sistema simplemente no pueden alcanzar.
 
@@ -38,10 +32,8 @@ Me gusta pensar en la lógica como un par de lentes. Durante siglos usamos el le
 
 Las experiencias psicodélicas sugieren algo parecido sobre nosotros mismos. Lo que llamamos lógica sería una construcción de nuestra estructura cerebral, y al alterar esa arquitectura los lentes habituales se rompen. Quizás el determinismo que buscamos en el cosmos, la respuesta a la materia oscura o al caos cuántico, esté ahí, y nuestra computadora biológica no tenga el software necesario para procesarlo sin usar la probabilidad como muleta.
 
-## ¿Quién programa a quién?
-
 Si una inteligencia artificial logra modificarse a sí misma, aparece la [paradoja del barco de Teseo](https://es.wikipedia.org/wiki/Paradoja_de_Teseo). Si reemplazamos todas las piezas de un barco, ¿sigue siendo el mismo barco? Si la IA cambia su propia lógica, ¿es la misma entidad o una nueva?
 
-Hay una versión todavía más interesante. Cuando nosotros modificamos una IA porque su comportamiento nos dio ideas nuevas, ¿no es la IA la que nos está usando para actualizarse? Entramos en lo que Hofstadter llama una *jerarquía enredada*, donde el usuario y la herramienta se programan mutuamente.
+Y cuando nosotros modificamos una IA porque su comportamiento nos dio ideas nuevas, ¿no es la IA la que nos está usando para actualizarse? Entramos en lo que Hofstadter llama una *jerarquía enredada*, donde el usuario y la herramienta se programan mutuamente.
 
-Bach, Escher y Gödel invitan a ver la inteligencia como algo más que seguir reglas. Incluye la capacidad de "saltar fuera" del sistema para cuestionarlo. El subtítulo del libro en español es *Un Eterno y Grácil Bucle*, y al final todos somos parte de él, intentando entender el código que nos escribe mientras nosotros mismos intentamos escribirlo.
+Este libro invita a ver la inteligencia como la capacidad de "saltar fuera" del sistema para cuestionarlo. Su subtítulo en español es *Un Eterno y Grácil Bucle*, y al final todos somos parte de él, intentando entender el código que nos escribe mientras nosotros mismos intentamos escribirlo.
