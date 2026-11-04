@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>La ilusión del afuera · Yusent Chig</title>
+  <meta name="description" content="Notas sobre los capítulos XV y XVI de Gödel, Escher, Bach: por qué el agujero de Gödel no se puede tapar, el argumento de Lucas, la autorreproducción y lo que la biología descubrió después.">
+  <meta property="og:description" content="Notas sobre los capítulos XV y XVI de Gödel, Escher, Bach: por qué el agujero de Gödel no se puede tapar, el argumento de Lucas, la autorreproducción y lo que la biología descubrió después.">
+  <meta name="author" content="Yusent Chig">
+  <meta property="og:site_name" content="Yusent Chig">
+  <meta property="og:title" content="La ilusión del afuera">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.yusent.com/blog/la-ilusion-del-afuera/">
+  <meta property="og:image" content="https://www.yusent.com/assets/images/card.jpg">
+  <meta property="article:published_time" content="2026-11-03">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.yusent.com/blog/la-ilusion-del-afuera/">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300;1,500&family=Inter:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Yusent Chig</a>
+    <nav><a href="/blog/">Blog</a></nav>
+  </header>
+  <main>
+    <article>
+      <header class="post-header">
+        <h1>La ilusión del afuera</h1>
+        <time datetime="2026-11-03">3 de noviembre de 2026</time>
+      </header>
+      <aside class="series">
+        <p class="kicker">Serie: <a href="/blog/series/geb/">Gödel, Escher, Bach</a></p>
+<p>Coordino un club de lectura en el que estamos leyendo <a
+href="https://www.goodreads.com/book/show/24113.G_del_Escher_Bach"><em>Gödel,
+Escher, Bach</em></a>, de Douglas Hofstadter, y escribo un ensayo por
+cada fragmento que leemos.</p>
+<p>El libro se publicó en 1979 y entrelaza la lógica de Kurt Gödel, los
+grabados de M. C. Escher y la música de J. S. Bach para preguntarse cómo
+puede surgir una mente a partir de piezas que no piensan. Estas notas
+recogen las ideas que me provoca cada lectura, varias de ellas vistas
+desde mi oficio de programador, así que se pueden leer sin haber abierto
+el libro.</p>
+        <p><a href="/blog/series/geb/">Ver todas las notas de la serie</a></p>
+      </aside>
+<p>En el capítulo XV Hofstadter se pone en el lugar de un crítico que
+sospecha que Gödel solo encontró un defecto escondido en <a
+href="/blog/la-sala-de-maquinas/">TNT</a>. Si el problema es un agujero,
+una oración G que no se puede demostrar ni refutar, lo natural es
+taparlo agregando G como sexto axioma. En el sistema nuevo, TNT+G, G ya
+es un teorema. Pero la vulnerabilidad de TNT nunca estuvo en un axioma
+que faltaba, sino en que puede hablar de sí misma, y TNT+G habla de sí
+misma igual de bien. Basta construir una cadena que diga “no puedo ser
+demostrada en TNT+G” y el agujero reaparece.</p>
+<p>Podemos seguir agregando G′, luego G″, y así sucesivamente. Tarde o
+temprano notaremos que todas las G tienen la misma forma tipográfica, y
+nos preguntaremos por qué no agregarlas de golpe con un esquema de
+axioma, Gω. Es el Fonógrafo Omega del Cangrejo, y tampoco sirve. Si hay
+un molde tipográfico para todas las G, hay un molde aritmético para sus
+números Gödel, y el sistema puede representar ese molde y usarlo en su
+contra. Hofstadter lo llama incompletitud esencial: cualquier sistema
+que exprese la aritmética, represente las relaciones recursivas y tenga
+axiomas reconocibles por un procedimiento finito se gödeliza. Es el
+truco de la <a
+href="https://es.wikipedia.org/wiki/Argumento_de_la_diagonal_de_Cantor">diagonal
+de Cantor</a>: dar la lista explícita es lo que la arruina. Por debajo
+de cierta masa crítica un sistema es inofensivo; por encima, adquiere
+autorreferencia y se condena solo. Los sistemas cavan sus propios
+agujeros, y lo hacen con su riqueza, no con sus defectos.</p>
+<p>El filósofo <a
+href="https://en.wikipedia.org/wiki/John_Lucas_(philosopher)">J. R.
+Lucas</a> usa la repetitividad para sostener que la mente no es una
+máquina. Toda máquina es un sistema formal; a todo sistema formal le
+puedo construir su G; yo veo que G es verdadera y la máquina nunca la va
+a imprimir; por lo tanto yo sé algo que ella no. “La mente tiene siempre
+la última palabra.” Hofstadter lo ilustra con el <a
+href="https://en.wikipedia.org/wiki/Dragon_(M._C._Escher)"><em>Dragón</em></a>
+de Escher, que pasa la cabeza y la cola por dos cortes en el papel para
+fingir que es tridimensional, y sigue siendo plano. Podemos recortar el
+grabado, doblarlo, fotografiarlo, y cada vez que vuelve a ser plano
+vuelve a ser vulnerable. Un programa que incorpore un “operador de
+gödelización” tampoco captura la esencia del método; desde fuera siempre
+se le puede desintegrar. Hasta aquí Lucas gana.</p>
+<p>Que no exista un algoritmo para gödelizar debería hacernos desconfiar
+de que nosotros sí podamos hacerlo en todos los casos. Una cosa es decir
+en abstracto que se puede; otra es saber cómo en cada sistema concreto.
+En la <em>Cantatatata de cumpleaños</em>, Aquiles inventa el nombre ω
+para sumar todas las respuestas de la Tortuga de una vez, luego
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mi>ω</mi></msup><annotation encoding="application/x-tex">\omega^\omega</annotation></semantics></math>,
+luego una torre de omegas, hasta que aparece una irregularidad nueva que
+exige un nombre nuevo, ε₀. Las irregularidades aparecen irregularmente.
+Church y Kleene lo formalizaron: no hay sistema de notación recursivo
+que nombre todos los ordinales constructivos. Así que cada persona tiene
+su umbral de gödelización, como el peso que puede levantar: fluctúa,
+pero existe. Donde se rompe la uniformidad no es del lado del sistema
+sino del nuestro, y a partir de cierta complejidad un sistema formal,
+aunque incompleto, tiene el mismo poder que un humano.</p>
+<p>Whiteley lo dijo más corto: “Lucas no puede, coherentemente, enunciar
+esta oración”. Es verdadera, y Lucas no puede afirmarla sin
+contradecirse. Lucas también es incompleto, al nivel de un sistema
+formal refinado. Hofstadter remata con Lucus el Pensador, que al ver a
+una mujer por primera vez proclama que él puede ver la cara de ella y
+ella no puede ver la suya, y cuando ella le responde que la situación es
+simétrica, inventa la palabra “femivisión” para no concederle el mismo
+nombre. Como programador que pasa el día conversando con modelos de IA,
+reconozco el gesto. Cada vez que la máquina hace algo que antes
+considerábamos inteligencia, alguien le cambia el nombre. Es lo que
+llamamos el <a href="https://es.wikipedia.org/wiki/Efecto_IA">efecto
+IA</a>.</p>
+<p>En <a href="/blog/el-vertigo-de-la-autorreferencia/">mi primera nota
+sobre este libro</a> escribí que Hofstadter invita a ver la inteligencia
+como la capacidad de saltar fuera del sistema. Aquí me corrige. Un
+programa puede modificarse a sí mismo, pero esa modificabilidad ya
+estaba en el programa inicial; girar y contorsionarse no es salir. Lo
+que sí existe es algo más modesto: brincar de un subsistema del cerebro
+a otro más amplio, y eso se siente como salir de uno mismo. La
+distinción que me llevo es la de percibirse y trascenderse. Podemos
+vernos en un espejo, en una foto, en la descripción de otro, en el
+psicoanálisis; no podemos salirnos de la piel. También responde a la
+pregunta del barco de Teseo que dejé abierta en esa nota: una IA que
+cambia su propia lógica sigue obedeciendo las reglas que le permitieron
+cambiarla.</p>
+<p>El tema del afuera me regresó al principio hermético del mentalismo
+con el que arranqué estas notas: el universo está en la mente de un
+dios. Al escribirlo así, uno se concede un afuera gratis. El dios está
+fuera porque el universo está dentro de él. Pero la mente del dios es el
+sistema. El universo no está fuera de esa mente; es algo que ella
+produce, como TNT produce enunciados sobre TNT, y el afuera del dios es
+un artefacto de la frase. Pasa lo mismo cuando preguntamos qué hay fuera
+del espacio-tiempo. La pregunta presupone un espacio de inmersión, y ese
+espacio ya era parte de lo que intentábamos delimitar. Delimitar dibuja
+un borde, y el borde sugiere un otro lado, pero el otro lado nace del
+gesto de delimitar. El Zen de <a href="/blog/partir-la-realidad/">una
+nota anterior</a> decía que nombrar es aislar. Definir “todo” es ponerle
+un borde al todo, y en ese borde nace el engaño de que lo podemos
+comprender entero. <a
+href="https://es.wikipedia.org/wiki/Paradoja_de_Russell">Russell</a> y
+Cantor ya habían llegado ahí: el conjunto de todos los conjuntos no es
+un conjunto.</p>
+<p>Hofstadter lo ilustra con los <a
+href="https://es.wikipedia.org/wiki/Di%C3%A1logos_sobre_los_dos_m%C3%A1ximos_sistemas_del_mundo">diálogos
+de Galileo</a>, que tienen tres personajes: Simplicio, el simplón;
+Salviati, el que piensa; y Sagredo, el tercero neutral que juzga. Pero
+Sagredo siempre le da la razón a Salviati. Se podría agregar un Sagredo
+de nivel superior, y luego otro, y esa escalera de objetividad nunca es
+más objetiva que el primer nivel, donde Salviati simplemente tiene
+razón. Sagredo aporta la ilusión de salida del sistema.</p>
+<p>Me quedé con una pregunta: ¿cómo puede una parte del todo contener el
+todo? La respuesta de estos capítulos es que sí puede, pero como
+representación. La numeración Gödel es exactamente eso, un fragmento de
+la aritmética que codifica toda la aritmética, incluido el fragmento.
+Dedekind definió el infinito como un conjunto que se puede poner en
+correspondencia con una parte propia de sí mismo. Lo que Gödel agrega es
+que el reflejo nunca es completo, y lo que deja fuera es un enunciado
+sobre el reflejo. Un mapa cabe en el territorio, pero no puede ser el
+territorio.</p>
+<p>El capítulo XVI toma esa idea y la baja a la materia. Autorreferencia
+y autorreproducción son el mismo fenómeno en dos sustratos. “Este
+enunciado es falso” parece simple, pero es un témpano: casi todo el
+trabajo lo hace quien lo lee, que entiende español y resuelve a qué
+apunta “este enunciado”. Quine lo volvió explícito partiendo la oración
+en instrucciones y molde. En software, la versión es un programa que
+imprime su entrada seguida de su entrada entre comillas; si le damos
+como entrada su propia definición, se imprime a sí mismo. Es el quine de
+mi primera nota, y Hofstadter llega incluso al <a
+href="https://github.com/mame/quine-relay">quine ouroboros</a> antes de
+que existiera: pregunta si un programa que se imprime traducido a otro
+lenguaje sigue siendo autorreproductor. El secreto, en todos los casos,
+es que una misma cadena funciona como programa y como datos.</p>
+<p>Cuánto trabajo hace el mensaje y cuánto el lector es una cuestión de
+grado. Una hoja en una fotocopiadora se “reproduce”, pero la tarea
+entera la hace la máquina; es una autorreproducción fraudulenta. Yo <a
+href="/blog/el-ejecutivo-y-el-disco/">he defendido en estas notas</a>
+que el significado vive en el sistema que interpreta, y aquí Hofstadter
+concede más de lo que esperaba. Un ADN aislado no se reproduce. Necesita
+polimerasas y ribosomas, un sistema básico suficientemente sólido, y el
+Código Genético no vive ni siquiera en el ribosoma: vive en las
+moléculas de ARN de transferencia, que a su vez salen del ADN. El
+mensaje exterior intenta ser parte del mensaje interior, como el dragón,
+y nunca lo logra del todo; siempre tiene que haber algo de código ya
+presente. Lo que la célula tiene, y el <a
+href="/blog/el-espejo-de-la-razon/">tocadiscos de mis notas
+anteriores</a> no, es que replica todo a la vez: programa, datos,
+intérprete y procesador. De ahí que el origen de la vida sea un problema
+de arranque, y Hofstadter lo deja ahí, en el asombro.</p>
+<p>La tabla central del capítulo es el Correspondogma: ADN y cadenas de
+TNT, ARN y enunciados de números, proteínas y enunciados sobre TNT,
+transcripción e interpretación, traducción y aritmetización, Código
+Genético y Código Gödel, Crick y Gödel. Hofstadter diseñó su TNT austera
+con exactamente veinte símbolos y su numeración con los dígitos 1, 2, 3
+y 6 para que la tabla del código genético fuera literalmente la del
+código Gödel. Y en la cúspide de ambas columnas aparecen los bucles:
+proteínas que actúan sobre proteínas que actúan sobre proteínas,
+enunciados sobre enunciados sobre enunciados. La contraparte celular del
+teorema de Gödel es el <em>Contracrostipunctus</em> con otros nombres:
+fonógrafo y célula, disco y ADN. Para toda célula existe un ADN que, al
+ser traducido, produce proteínas que la destruyen. Un fago T4 inyecta su
+ADN en una bacteria y veinticinco minutos después la bacteria revienta
+con doscientas copias. “No puedo ser replicada por la célula X” es <a
+href="https://es.wikipedia.org/wiki/Paradoja_de_Epim%C3%A9nides">Epiménides</a>
+a nivel molecular.</p>
+<p>Como en <a href="/blog/algo-de-arqueologia/">los capítulos XI y
+XII</a>, leer esto medio siglo después tiene algo de arqueología, y aquí
+la arqueología juega a favor del libro. El problema del huevo y la
+gallina, ribosomas hechos de proteínas que solo los ribosomas fabrican,
+tiene hoy una respuesta que Hofstadter no tenía: el centro catalítico
+del ribosoma, donde se forma el enlace entre aminoácidos, es ARN, no
+proteína; el ribosoma es una ribozima. Junto con el descubrimiento de
+ARN catalítico en los ochenta, eso sostiene la <a
+href="https://es.wikipedia.org/wiki/Hip%C3%B3tesis_del_mundo_de_ARN">hipótesis
+del mundo de ARN</a>: una molécula que fue a la vez información y
+catalizador, datos y programa, antes de que existieran ADN y proteínas.
+Es más gödeliano que el modelo del libro: el nivel que traduce y el
+nivel que se traduce eran el mismo sustrato.</p>
+<p>El “juego TC” entre bacterias y fagos también escaló. Hofstadter
+describe cómo la bacteria rotula su propio ADN con grupos metilo y
+destruye el que no lleva rótulo, y cómo el fago podría aprender a
+rotularse. Hoy conocemos <a
+href="https://es.wikipedia.org/wiki/CRISPR">CRISPR</a>: la bacteria
+guarda fragmentos del ADN de fagos anteriores dentro de su propio
+cromosoma y los usa para reconocer y cortar invasores futuros, y los
+fagos responden con proteínas anti-CRISPR. La célula lleva, escrito en
+su propio ADN, un registro de los discos que intentaron romperla. Es la
+autorreferencia que el capítulo anuncia: el sistema de defensa es una
+descripción del ataque.</p>
+<p>Otras cosas envejecieron en contra. El plegamiento de proteínas
+aparece como un gran problema abierto, y en 2020 <a
+href="https://es.wikipedia.org/wiki/AlphaFold">AlphaFold</a> lo resolvió
+en la práctica, aunque no como Hofstadter imaginaba: no con la fórmula
+física que convierte la secuencia en forma, sino con un modelo
+estadístico entrenado sobre miles de estructuras conocidas. Y la premisa
+de que la forma está implícita en la secuencia es una idealización;
+muchas proteínas necesitan chaperonas para plegarse y otras no tienen
+forma fija. La metilación, que él conoce solo como rótulo antiviral, es
+hoy el núcleo de la <a
+href="https://es.wikipedia.org/wiki/Epigen%C3%A9tica">epigenética</a>,
+un nivel de información sobre el ADN que se hereda sin estar en la
+secuencia; su tabla de niveles necesita un piso que no tenía. Los genes
+eucariotas están partidos en trozos que se ensamblan de varias maneras,
+así que “un gen, una enzima” ya no se sostiene. Y el Código Genético es
+menos arbitrario que el de Gödel: tiene variantes, admite aminoácidos
+extra, y la asignación de tripletes minimiza el daño de las mutaciones
+más comunes. Nada de esto toca la tesis. Casi todo lo que la biología
+descubrió después agregó cruces de niveles.</p>
+<p>Hofstadter cierra el capítulo XV con el Zen. El adepto se aparta cada
+vez más de lo que cree ser, violando todas las reglas que lo encadenan,
+incluidas las del Zen, y en ese sendero puede ocurrir la iluminación. Si
+hay un defecto, no está en TNT sino en lo que esperábamos de ella. La
+salida no existe; lo que existe es ampliar, poco a poco, el ámbito del
+sistema.</p>
+      <nav class="series-nav" aria-label="Gödel, Escher, Bach">
+        <a rel="prev" href="/blog/algo-de-arqueologia/"><span>Anterior</span>Algo de arqueología</a>
+      </nav>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a href="/blog/">← Todas las publicaciones</a>
+  </footer>
+</body>
+</html>
